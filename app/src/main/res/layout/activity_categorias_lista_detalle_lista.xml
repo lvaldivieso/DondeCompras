@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/list_selector"
+    android:orientation="horizontal">
+
+    <LinearLayout android:id="@+id/thumbnail_detalle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="3dip"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/image_bg"
+        android:layout_marginRight="5dip">
+
+        <ImageView
+            android:id="@+id/imagen_detalle"
+            android:layout_width="50dip"
+            android:layout_height="50dip"
+            android:src="@drawable/ic_launcher"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/establecimiento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_activity_categorias"
+        android:textColor="#040404"
+        android:typeface="sans"
+        android:textSize="20dip"
+        android:textStyle="bold"
+        android:capitalize="words"
+        android:layout_alignTop="@+id/thumbnail_detalle"
+        android:layout_toRightOf="@+id/thumbnail_detalle"
+        android:layout_toEndOf="@+id/thumbnail_detalle"
+        android:layout_marginLeft="18dp"
+        android:layout_marginStart="18dp" />
+
+    <TextView
+        android:id="@+id/direccion_establecimiento"
+        android:text="direccion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/thumbnail_detalle"
+        android:layout_alignLeft="@+id/establecimiento"
+        android:layout_alignStart="@+id/establecimiento" />
+
+    <TextView
+        android:id="@+id/descripcion_esta"
+        android:text="desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/direccion_establecimiento"
+        android:layout_alignStart="@+id/direccion_establecimiento"
+        android:layout_marginTop="70dp" />
+
+    <ImageView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_siguiente"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:id="@+id/imagedetalle" />
+
+</RelativeLayout>

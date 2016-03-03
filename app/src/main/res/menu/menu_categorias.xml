@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="compras.donde.lvr.com.dondecompras.CategoriasActivity">
+
+
+    <item
+        android:id="@+id/action_favorite"
+        android:orderInCategory="100"
+        android:title="Favorito"
+        app:showAsAction="ifRoom|withText"
+        android:icon="@drawable/ic_favoritos"/>
+
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="ifRoom|withText"
+        android:icon="@drawable/configuracion"/>
+
+
+</menu>

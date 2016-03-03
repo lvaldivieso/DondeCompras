@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Donde Compras</string>
+    <string name="action_settings">Preferencias</string>
+    <string name="title_activity_categorias">Categorias</string>
+    <string name="title_activity_categorias_detalle_lista">CategoriasDetalleLista</string>
+    <string name="title_activity_item_detalle">ItemDetalle</string>
+    <string name="title_activity_borrar">borrar</string>
+    <string name="salir">Salir</string>
+    <string name="login">Ingresar</string>
+    <string name="no_login">Aun no te encuentras Logueado</string>
+    <string name="action_favoritos">Favoritos</string>
+</resources>

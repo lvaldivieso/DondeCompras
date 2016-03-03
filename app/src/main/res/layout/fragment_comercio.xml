@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/txt_nombre_comercio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NOMBRE"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:layout_above="@+id/txt_direccion_e"
+        android:layout_alignLeft="@+id/txt_direccion_e"
+        android:layout_alignStart="@+id/txt_direccion_e" />
+
+    <TextView
+        android:id="@+id/txt_direccion_e"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="direccion"
+        android:layout_above="@+id/txt_descripcion_e"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="53dp"
+        android:layout_marginStart="53dp" />
+
+    <TextView
+        android:id="@+id/txt_descripcion_e"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="descripcion"
+        android:layout_marginTop="9dp"
+        android:layout_below="@+id/btn_favorito"
+        android:layout_alignLeft="@+id/txt_direccion_e"
+        android:layout_alignStart="@+id/txt_direccion_e" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_favorito"
+        android:src="@drawable/favoritos"
+        android:background="#00ffffff"
+        android:layout_marginRight="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:visibility="invisible"/>
+
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_favorito_no"
+        android:src="@drawable/favorite_no"
+        android:background="#00ffffff"
+        android:layout_marginRight="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp" />
+
+</RelativeLayout>
