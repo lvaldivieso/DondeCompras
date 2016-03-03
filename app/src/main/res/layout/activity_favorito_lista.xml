@@ -54,7 +54,6 @@
         android:text="desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
         android:textColor="#FFFFFF"
         android:layout_below="@+id/direccion_establecimiento"
         android:layout_alignLeft="@+id/direccion_establecimiento"
@@ -63,20 +62,21 @@
     <ImageView android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_siguiente"
+        android:id="@+id/imagedetalle"
+        android:layout_alignBottom="@+id/descripcion_esta"
         android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:id="@+id/imagedetalle" />
+        android:layout_alignParentEnd="true" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageButton"
-        android:src="@drawable/borrar_favorito"
+        android:src="@drawable/ic_trash"
         android:background="#00ffffff"
-        android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/imagedetalle"
-        android:layout_toStartOf="@+id/imagedetalle"
-        android:layout_marginRight="20dp"
-        android:layout_marginEnd="20dp" />
+        android:layout_marginRight="6dp"
+        android:layout_marginEnd="6dp"
+        android:layout_alignTop="@+id/thumbnail_detalle"
+        android:layout_alignRight="@+id/imagedetalle"
+        android:layout_alignEnd="@+id/imagedetalle" />
 
 </RelativeLayout>

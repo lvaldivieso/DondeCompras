@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/title_activity_categorias"
-        android:textColor="#040404"
+        android:textColor="#FFFFFF"
         android:typeface="sans"
         android:textSize="20dip"
         android:textStyle="bold"
@@ -41,7 +41,8 @@
         android:text="direccion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/thumbnail_detalle"
+        android:textColor="#FFFFFF"
+        android:layout_below="@+id/establecimiento"
         android:layout_alignLeft="@+id/establecimiento"
         android:layout_alignStart="@+id/establecimiento" />
 
@@ -50,10 +51,10 @@
         android:text="desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:textColor="#FFFFFF"
+        android:layout_below="@+id/direccion_establecimiento"
         android:layout_alignLeft="@+id/direccion_establecimiento"
-        android:layout_alignStart="@+id/direccion_establecimiento"
-        android:layout_marginTop="70dp" />
+        android:layout_alignStart="@+id/direccion_establecimiento" />
 
     <ImageView android:layout_width="wrap_content"
         android:layout_height="wrap_content"
