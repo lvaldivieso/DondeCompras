@@ -39,8 +39,8 @@ public class ListViewAdapterFavorito extends BaseAdapter {
     ProgressDialog mProgressDialog;
     JSONParser jsonParser = new JSONParser();
     ArrayList<HashMap<String, String>> arraylist;
+    int pos;
     private static final String _URL = "http://desarrollo3.microvoz.com.ar/api/v1/dondecompras/favorito";
-    int posicion;
 
 
     public ListViewAdapterFavorito(Context context,
@@ -89,13 +89,13 @@ public class ListViewAdapterFavorito extends BaseAdapter {
         descripcion = (TextView) itemView.findViewById(R.id.descripcion_esta);
 
         borrarFav = (ImageButton) itemView.findViewById(R.id.imageButton);
-
+        borrarFav.setTag(new Integer(position));
         borrarFav.setOnClickListener(new View.OnClickListener() {
             @Override
-        public void onClick(View arg0)
+        public void onClick(View view)
             {
                 new BorrarFavorito().execute();
-
+                pos = position;
             }
         });
 
@@ -152,7 +152,7 @@ public class ListViewAdapterFavorito extends BaseAdapter {
         @Override
         protected void onPostExecute(String args) {
             mProgressDialog.dismiss();
-            data.get(posicion).clear();
+            data.remove(pos);
             notifyDataSetChanged();
             CustomToast miToast = new CustomToast(context, Toast.LENGTH_LONG);
             miToast.show("Favorito Borrado");
