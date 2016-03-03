@@ -49,7 +49,9 @@ public class CategoriasDetalle extends AppCompatActivity {
     private ProgressDialog mProgressDialog;
     String posicion;
     JSONParser jsonParser = new JSONParser();
-
+    GPSTracker gps = new GPSTracker(this);
+    double latitude = gps.getLatitude();
+    double longitude = gps.getLongitude();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,7 +70,8 @@ public class CategoriasDetalle extends AppCompatActivity {
 
         new DownloadJSON().execute();
         posicion = getIntent().getStringExtra("posicion");
-        LocationManager mlocManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+
+        /*LocationManager mlocManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         MyLocationListener mlocListener = new MyLocationListener();
         mlocListener.setMainActivity(this);
         mlocManager.requestLocationUpdates("gps", 0, 0, mlocListener);
@@ -90,7 +93,7 @@ public class CategoriasDetalle extends AppCompatActivity {
             Dialog alertDialog = builder.create();
             alertDialog.setCanceledOnTouchOutside(false);
             alertDialog.show();
-        }
+        }*/
     }
     private class DownloadJSON extends AsyncTask<String, String, String> {
         private DownloadJSON() {
@@ -119,7 +122,7 @@ public class CategoriasDetalle extends AppCompatActivity {
             Log.d("Coordenadas_Lat", String.valueOf(latitud));
             Log.d("Coordenadas_log", String.valueOf(longitud));
 
-//            Toast.makeText(getApplicationContext(), " Latitud " + String.valueOf(latitud) + " Longitud " + String.valueOf(longitud), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), " Latitud " + String.valueOf(latitud) + " Longitud " + String.valueOf(longitud), Toast.LENGTH_SHORT).show();
             try {
                 jsonarray = json.getJSONArray("Comercio");
                 for (int i = 0; i < jsonarray.length(); i++) {
@@ -149,7 +152,8 @@ public class CategoriasDetalle extends AppCompatActivity {
             mProgressDialog.dismiss();
         }
     }
-    public class MyLocationListener implements LocationListener {
+
+    /*public class MyLocationListener implements LocationListener {
         CategoriasDetalle mainActivity;
         public CategoriasDetalle getMainActivity() {
             return mainActivity;
@@ -171,5 +175,5 @@ public class CategoriasDetalle extends AppCompatActivity {
         public void onProviderDisabled(String provider) {
             Toast.makeText(getApplicationContext(), "Gps Inactivo", Toast.LENGTH_SHORT).show();
         }
-    }
+    }*/
 }
