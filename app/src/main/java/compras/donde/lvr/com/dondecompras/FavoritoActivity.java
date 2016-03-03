@@ -30,6 +30,7 @@ public class FavoritoActivity extends AppCompatActivity {
     static String LATITUD = "latitud_esta";
     static String LONGITUD = "longitud_esta";
     static String ID_COMERCIO = "id_comercio";
+    static String ES_FAVORITO = "favorito";
     private static final String _URL = "http://190.210.203.145/api/v1/dondecompras/favorito";
 
     ListViewAdapterFavorito adapter;
@@ -84,6 +85,7 @@ public class FavoritoActivity extends AppCompatActivity {
                     map.put("latitud_esta", json.getString("latitud"));
                     map.put("longitud_esta", json.getString("longitud"));
                     map.put("img_previa", json.getString("ruta_imagen"));
+                    map.put("favorito", json.getString("es_favorito"));
                     arraylist.add(map);
                 }
             } catch (JSONException e) {

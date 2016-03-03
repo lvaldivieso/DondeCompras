@@ -118,6 +118,7 @@ public class ListViewAdapterFavorito extends BaseAdapter {
                 intent.putExtra("latitud", resultp.get(FavoritoActivity.LATITUD));
                 intent.putExtra("longitud", resultp.get(FavoritoActivity.LONGITUD));
                 intent.putExtra("id_comercio", resultp.get(FavoritoActivity.ID_COMERCIO));
+                intent.putExtra("favorito", resultp.get(FavoritoActivity.ES_FAVORITO));
                 context.startActivity(intent);
             }
         });
