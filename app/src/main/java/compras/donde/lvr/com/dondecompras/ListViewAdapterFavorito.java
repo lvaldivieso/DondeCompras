@@ -111,12 +111,13 @@ public class ListViewAdapterFavorito extends BaseAdapter {
             public void onClick(View arg0) {
                 resultp = data.get(position);
                 Intent intent = new Intent(context, ComercioMapaActivity.class);
-                    intent.putExtra("id_comercio", resultp.get(FavoritoActivity.ID));
+                intent.putExtra("id_comercio", resultp.get(FavoritoActivity.ID));
                 intent.putExtra("comercio", resultp.get(FavoritoActivity.NOMBRE_ESTABLECIMIENTO));
                 intent.putExtra("direccion", resultp.get(FavoritoActivity.DIRECCION));
                 intent.putExtra("descripcion", resultp.get(FavoritoActivity.DESCRIPCION));
                 intent.putExtra("latitud", resultp.get(FavoritoActivity.LATITUD));
                 intent.putExtra("longitud", resultp.get(FavoritoActivity.LONGITUD));
+                intent.putExtra("id_comercio", resultp.get(FavoritoActivity.ID_COMERCIO));
                 context.startActivity(intent);
             }
         });
@@ -137,7 +138,7 @@ public class ListViewAdapterFavorito extends BaseAdapter {
         protected String doInBackground(String... args) {
             arraylist = new ArrayList<HashMap<String, String>>();
             List params = new ArrayList();
-            params.add(new BasicNameValuePair("id_comercio",resultp.get(FavoritoActivity.ID)));
+            params.add(new BasicNameValuePair("id_comercio",resultp.get(FavoritoActivity.ID_COMERCIO)));
             params.add(new BasicNameValuePair("id_usuario","3"));
             Log.d("request!", "starting");
             JSONObject json = jsonParser.makeHttpRequest(_URL, "DELETE",
