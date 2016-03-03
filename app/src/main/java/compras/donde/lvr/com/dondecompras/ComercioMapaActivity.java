@@ -45,6 +45,7 @@ public class ComercioMapaActivity extends Activity {
     ProgressDialog mProgressDialog;
     JSONParser jsonParser = new JSONParser();
 
+    String idComercio;
 
     private static final String _URL = "http://190.210.203.145/api/v1/dondecompras/favorito";
     ArrayList<HashMap<String, String>> arraylist;
@@ -66,8 +67,9 @@ public class ComercioMapaActivity extends Activity {
         direccion_e.setText(getIntent().getStringExtra("direccion"));
         descripcion_e.setText(getIntent().getStringExtra("descripcion"));
         String esfavorito = (getIntent().getStringExtra("favorito"));
+        idComercio = (getIntent().getStringExtra("id_comercio"));
 
-        if (esfavorito!= null){
+        if (esfavorito.equals("null")){
             favorito.setVisibility(View.INVISIBLE);
             favorito_no.setVisibility(View.VISIBLE);
         }else{
@@ -108,7 +110,7 @@ public class ComercioMapaActivity extends Activity {
         protected String doInBackground(String... args) {
             arraylist = new ArrayList<HashMap<String, String>>();
             List params = new ArrayList();
-            params.add(new BasicNameValuePair("id_comercio","2"));
+            params.add(new BasicNameValuePair("id_comercio", idComercio));
             params.add(new BasicNameValuePair("id_usuario","3"));
             Log.d("request!", "starting");
             JSONObject json = jsonParser.makeHttpRequest(_URL, "DELETE",
@@ -127,7 +129,7 @@ public class ComercioMapaActivity extends Activity {
 
     public void GuardarFavorito() {
         Map<String, Object> params = new HashMap<String, Object>();
-        params.put("id_comercio", getIntent().getStringExtra("id_comercio"));
+        params.put("id_comercio", idComercio);
         params.put("id_usuario", "3");
         aq.ajax(_URL, params, JSONObject.class, new AjaxCallback<JSONObject>() {
 
