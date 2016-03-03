@@ -65,7 +65,15 @@ public class ComercioMapaActivity extends Activity {
         comercio.setText(getIntent().getStringExtra("comercio"));
         direccion_e.setText(getIntent().getStringExtra("direccion"));
         descripcion_e.setText(getIntent().getStringExtra("descripcion"));
+        String esfavorito = (getIntent().getStringExtra("favorito"));
 
+        if (esfavorito!= null){
+            favorito.setVisibility(View.INVISIBLE);
+            favorito_no.setVisibility(View.VISIBLE);
+        }else{
+            favorito_no.setVisibility(View.INVISIBLE);
+            favorito.setVisibility(View.VISIBLE);
+        }
         favorito.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

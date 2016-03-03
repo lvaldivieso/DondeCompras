@@ -36,6 +36,7 @@ public class CategoriasDetalle extends AppCompatActivity {
     static String NOMBRE_ESTABLECIMIENTO = "nombre_esta";
     static String LATITUD = "latitud_esta";
     static String LONGITUD = "longitud_esta";
+    static String ES_FAVORITO = "favorito";
     private static final String _URL = "http://190.210.203.145/api/v1/dondecompras/comercio";
     ListViewAdapterDetalle adapter;
     ArrayList<HashMap<String, String>> arraylist;
@@ -108,8 +109,9 @@ public class CategoriasDetalle extends AppCompatActivity {
           //  params.add(new BasicNameValuePair("", String.valueOf(latitud)));
           //  params.add(new BasicNameValuePair("", String.valueOf(longitud)));
           //  params.add(new BasicNameValuePair("", String.valueOf(latitud)));
-            params.add(new BasicNameValuePair("", posicion));
-            params.add(new BasicNameValuePair("", distancia));
+            params.add(new BasicNameValuePair("usuario", "3"));
+            params.add(new BasicNameValuePair("categoria", posicion));
+            params.add(new BasicNameValuePair("distancia", distancia));
             Log.d("request!", "starting");
             JSONObject json = jsonParser.makeHttpRequest(_URL, "GET", params);
             Log.d("Json resultado", json.toString());
@@ -129,6 +131,7 @@ public class CategoriasDetalle extends AppCompatActivity {
                     map.put("latitud_esta", json.getString("latitud"));
                     map.put("longitud_esta", json.getString("longitud"));
                     map.put("img_previa", json.getString("ruta_imagen"));
+                    map.put("favorito", json.getString("es_favorito"));
                     arraylist.add(map);
                 }
             } catch (JSONException e) {

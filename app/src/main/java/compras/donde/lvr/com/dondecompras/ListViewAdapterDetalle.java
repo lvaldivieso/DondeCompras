@@ -76,6 +76,7 @@ public class ListViewAdapterDetalle extends BaseAdapter {
                 intent.putExtra("descripcion", resultp.get(CategoriasDetalle.DESCRIPCION));
                 intent.putExtra("latitud", resultp.get(CategoriasDetalle.LATITUD));
                 intent.putExtra("longitud", resultp.get(CategoriasDetalle.LONGITUD));
+                intent.putExtra("favorito", resultp.get(CategoriasDetalle.ES_FAVORITO));
                 context.startActivity(intent);
             }
         });
