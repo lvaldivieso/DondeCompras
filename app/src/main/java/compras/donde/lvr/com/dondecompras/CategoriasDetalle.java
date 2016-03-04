@@ -38,24 +38,32 @@ public class CategoriasDetalle extends AppCompatActivity {
     static String LONGITUD = "longitud_esta";
     static String ES_FAVORITO = "favorito";
     static String ID_COMERCIO = "id_comercio";
-    private static final String _URL = "http://190.210.203.145/api/v1/dondecompras/comercio";
+    private static final String _URL = "http://tiny-alien.com.ar/api/v1/dondecompras/comercio";
     ListViewAdapterDetalle adapter;
     ArrayList<HashMap<String, String>> arraylist;
     JSONArray jsonarray;
     JSONObject jsonobject;
-    double latitud;
     ListView listview;
-    double longitud;
     private ProgressDialog mProgressDialog;
-    String posicion;
     JSONParser jsonParser = new JSONParser();
-    GPSTracker gps = new GPSTracker(this);
-    double latitude = gps.getLatitude();
-    double longitude = gps.getLongitude();
+    String posicion;
+    double latitud;
+    double longitud;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.coordinator_categorias_lista_detalle);
+        GPSTracker gps = new GPSTracker(this);
+        double latitude = gps.getLatitude();
+        double longitude = gps.getLongitude();
+
+        latitud = latitude;
+        longitud = longitude;
+
+        Log.d("Coordenadas_Lat", String.valueOf(latitud));
+        Log.d("Coordenadas_log", String.valueOf(longitud));
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -71,29 +79,12 @@ public class CategoriasDetalle extends AppCompatActivity {
         new DownloadJSON().execute();
         posicion = getIntent().getStringExtra("posicion");
 
-        /*LocationManager mlocManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-        MyLocationListener mlocListener = new MyLocationListener();
-        mlocListener.setMainActivity(this);
-        mlocManager.requestLocationUpdates("gps", 0, 0, mlocListener);
-
         LocationManager lm = (LocationManager) getSystemService(LOCATION_SERVICE);
         if(!lm.isProviderEnabled(LocationManager.GPS_PROVIDER) ||
                 !lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
-
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("El GPS no esta Activado");
-            builder.setMessage("Por favor áctivalo para una mejor ubicación");
-            builder.setPositiveButton("HACERLO ...", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialogInterface, int i) {
-
-                    Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                    startActivity(intent);
-                }
-            });
-            Dialog alertDialog = builder.create();
-            alertDialog.setCanceledOnTouchOutside(false);
-            alertDialog.show();
-        }*/
+            gps.showSettingsAlert();
+        }
+      //  Toast.makeText(getApplicationContext(), " Latitud " + latitud + " Longitud " + longitud, Toast.LENGTH_SHORT).show();
     }
     private class DownloadJSON extends AsyncTask<String, String, String> {
         private DownloadJSON() {
@@ -110,19 +101,16 @@ public class CategoriasDetalle extends AppCompatActivity {
             String distancia = getSharedPreferences("PreferenciasUsuario", 0).getString("distancia", "1");
             arraylist = new ArrayList();
             List params = new ArrayList();
-          //  params.add(new BasicNameValuePair("", String.valueOf(latitud)));
-          //  params.add(new BasicNameValuePair("", String.valueOf(longitud)));
-          //  params.add(new BasicNameValuePair("", String.valueOf(latitud)));
+            params.add(new BasicNameValuePair("latitud", String.valueOf(latitud)));
+            params.add(new BasicNameValuePair("longitud", String.valueOf(longitud)));
+            params.add(new BasicNameValuePair("latitud", String.valueOf(latitud)));
             params.add(new BasicNameValuePair("usuario", "3"));
             params.add(new BasicNameValuePair("categoria", posicion));
             params.add(new BasicNameValuePair("distancia", distancia));
             Log.d("request!", "starting");
             JSONObject json = jsonParser.makeHttpRequest(_URL, "GET", params);
             Log.d("Json resultado", json.toString());
-            Log.d("Coordenadas_Lat", String.valueOf(latitud));
-            Log.d("Coordenadas_log", String.valueOf(longitud));
 
-            Toast.makeText(getApplicationContext(), " Latitud " + String.valueOf(latitud) + " Longitud " + String.valueOf(longitud), Toast.LENGTH_SHORT).show();
             try {
                 jsonarray = json.getJSONArray("Comercio");
                 for (int i = 0; i < jsonarray.length(); i++) {
@@ -152,28 +140,4 @@ public class CategoriasDetalle extends AppCompatActivity {
             mProgressDialog.dismiss();
         }
     }
-
-    /*public class MyLocationListener implements LocationListener {
-        CategoriasDetalle mainActivity;
-        public CategoriasDetalle getMainActivity() {
-            return mainActivity;
-        }
-        public void setMainActivity(CategoriasDetalle mainActivity) {
-            this.mainActivity = mainActivity;
-        }
-        public void onLocationChanged(Location location) {
-            location.getLatitude();
-            location.getLongitude();
-            latitud = location.getLatitude();
-            longitud = location.getLongitude();
-        }
-        public void onStatusChanged(String provider, int status, Bundle extras) {
-        }
-        public void onProviderEnabled(String provider) {
-            Toast.makeText(getApplicationContext(), "Gps Activado", Toast.LENGTH_SHORT).show();
-        }
-        public void onProviderDisabled(String provider) {
-            Toast.makeText(getApplicationContext(), "Gps Inactivo", Toast.LENGTH_SHORT).show();
-        }
-    }*/
 }

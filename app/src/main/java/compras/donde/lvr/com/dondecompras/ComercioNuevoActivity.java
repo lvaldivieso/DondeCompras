@@ -38,9 +38,9 @@ public class ComercioNuevoActivity extends AppCompatActivity {
     ArrayList<HashMap<String, String>> arraylist;
     int posicion_lista_clases;
     String posicion_lista_tipo;
-    private static final String _URL = "http://190.210.203.145/api/v1/dondecompras/clase";
-    private static final String _URL_tipo = "http://190.210.203.145/api/v1/dondecompras/tipo";
-    private static final String _URL_marca = "http://190.210.203.145/api/v1/dondecompras/marca";
+    private static final String _URL = "http://tiny-alien.com.ar/api/v1/dondecompras/clase";
+    private static final String _URL_tipo = "http://tiny-alien.com.ar/api/v1/dondecompras/tipo";
+    private static final String _URL_marca = "http://tiny-alien.com.ar/api/v1/dondecompras/marca";
 
     JSONParser jsonParser = new JSONParser();
 

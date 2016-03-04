@@ -47,7 +47,7 @@ public class ComercioMapaActivity extends Activity {
 
     String idComercio;
 
-    private static final String _URL = "http://190.210.203.145/api/v1/dondecompras/favorito";
+    private static final String _URL = "http://tiny-alien.com.ar/api/v1/dondecompras/favorito";
     ArrayList<HashMap<String, String>> arraylist;
     AQuery aq = new AQuery(this);
 

@@ -40,7 +40,7 @@ public class ListViewAdapterFavorito extends BaseAdapter {
     JSONParser jsonParser = new JSONParser();
     ArrayList<HashMap<String, String>> arraylist;
     int pos;
-    private static final String _URL = "http://desarrollo3.microvoz.com.ar/api/v1/dondecompras/favorito";
+    private static final String _URL = "http://tiny-alien.com.ar/api/v1/dondecompras/favorito";
 
 
     public ListViewAdapterFavorito(Context context,

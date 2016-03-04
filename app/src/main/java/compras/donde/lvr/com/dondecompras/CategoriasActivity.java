@@ -29,7 +29,7 @@ public class CategoriasActivity extends AppCompatActivity {
     ListViewAdapter adapter;
     ProgressDialog mProgressDialog;
     ArrayList<HashMap<String, String>> arraylist;
-    private static final String _URL = "http://190.210.203.145/api/v1/dondecompras/categoria";
+    private static final String _URL = "http://tiny-alien.com.ar/api/v1/dondecompras/categoria";
     static String CATEGORIA = "categoria";
     static String IMG_PREVIA = "img_previa";
     static String ID_CATEGORIAS ="id_categoria";
