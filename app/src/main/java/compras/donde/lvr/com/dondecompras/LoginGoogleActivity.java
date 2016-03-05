@@ -17,6 +17,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.androidquery.AQuery;
+import com.androidquery.callback.AjaxCallback;
+import com.androidquery.callback.AjaxStatus;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.SignInButton;
@@ -25,7 +28,14 @@ import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListe
 import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.model.people.Person;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LoginGoogleActivity extends ActionBarActivity implements View.OnClickListener,
         GoogleApiClient.ConnectionCallbacks, OnConnectionFailedListener{
@@ -41,6 +51,11 @@ public class LoginGoogleActivity extends ActionBarActivity implements View.OnCli
     private TextView tvName, tvMail, tvNotSignedIn;
     private ImageView imgProfilePic;
     private LinearLayout viewContainer;
+    private static final String _URL = "http://tiny-alien.com.ar/api/v1/dondecompras/usuario";
+    ArrayList<HashMap<String, String>> arraylist;
+    AQuery aq = new AQuery(this);
+    JSONArray jsonarray;
+    static String ID_USUARIO = "id_usuario";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -147,6 +162,32 @@ public class LoginGoogleActivity extends ActionBarActivity implements View.OnCli
 
                     new LoadProfileImage(imgProfilePic).execute(personPhotoUrl);
 
+                    Map<String, Object> params = new HashMap<String, Object>();
+                    params.put("nombre", personName);
+                    params.put("email", email);
+                    params.put("foto", personPhotoUrl);
+                    aq.ajax(_URL, params, JSONObject.class, new AjaxCallback<JSONObject>() {
+
+                        @Override
+                        public void callback(String url, JSONObject json, AjaxStatus status) {
+
+                            Log.d("json", json.toString());
+                            try {
+                                jsonarray = json.getJSONArray("Usuario");
+                                for (int i = 0; i < jsonarray.length(); i++) {
+                                    HashMap<String, String> map = new HashMap<String, String>();
+                                    json = jsonarray.getJSONObject(i);
+                                    map.put("id_usuario", json.getString("nombre"));
+                                    arraylist.add(map);
+                                }
+                            } catch (JSONException e) {
+                                Log.e("Error", e.getMessage());
+                                e.printStackTrace();
+                            }
+
+                        }
+                    });
+
                     SharedPreferences DondeComprasPreferencias = getSharedPreferences("PreferenciasUsuario", Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = DondeComprasPreferencias.edit();
                     String nombre_usuario = personName;
@@ -155,6 +196,7 @@ public class LoginGoogleActivity extends ActionBarActivity implements View.OnCli
                     editor.putString("Usuario", nombre_usuario);
                     editor.putString("Email", email_usuario);
                     editor.putString("Foto", personPhotoUrl);
+                    editor.putString("id_usuario", ID_USUARIO);
                     editor.commit();
 
                     Toast.makeText(getApplicationContext(),
