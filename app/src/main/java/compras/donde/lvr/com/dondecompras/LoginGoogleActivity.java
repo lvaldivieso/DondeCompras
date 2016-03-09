@@ -56,6 +56,7 @@ public class LoginGoogleActivity extends ActionBarActivity implements View.OnCli
     AQuery aq = new AQuery(this);
     JSONArray jsonarray;
     static String ID_USUARIO = "id_usuario";
+    String id_usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -172,12 +173,16 @@ public class LoginGoogleActivity extends ActionBarActivity implements View.OnCli
                         public void callback(String url, JSONObject json, AjaxStatus status) {
 
                             Log.d("json", json.toString());
+                            id_usuario = json.optString("id_usuario");
+                            Toast.makeText(getApplicationContext(), id_usuario, Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), json.toString(), Toast.LENGTH_LONG).show();
                             try {
                                 jsonarray = json.getJSONArray("Usuario");
                                 for (int i = 0; i < jsonarray.length(); i++) {
                                     HashMap<String, String> map = new HashMap<String, String>();
                                     json = jsonarray.getJSONObject(i);
-                                    map.put("id_usuario", json.getString("nombre"));
+                                    id_usuario = json.optString("id_usuario");
+                                    map.put("id_usuario", json.getString("id_usuario"));
                                     arraylist.add(map);
                                 }
                             } catch (JSONException e) {
@@ -192,15 +197,14 @@ public class LoginGoogleActivity extends ActionBarActivity implements View.OnCli
                     SharedPreferences.Editor editor = DondeComprasPreferencias.edit();
                     String nombre_usuario = personName;
                     String email_usuario = email;
-                    String foto = personPhotoUrl;
                     editor.putString("Usuario", nombre_usuario);
                     editor.putString("Email", email_usuario);
                     editor.putString("Foto", personPhotoUrl);
-                    editor.putString("id_usuario", ID_USUARIO);
+                    editor.putString("id_usuario", id_usuario);
                     editor.commit();
 
                     Toast.makeText(getApplicationContext(),
-                            "En este momento estas Logueado " + personName, Toast.LENGTH_LONG).show();
+                            "En este momento estas Logueado " + personName + ID_USUARIO, Toast.LENGTH_LONG).show();
 
                     Intent openMainActivity = new Intent(getApplicationContext(), CategoriasActivity.class);
                     startActivity(openMainActivity);

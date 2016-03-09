@@ -2,6 +2,8 @@ package compras.donde.lvr.com.dondecompras;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -24,6 +26,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -44,13 +47,21 @@ public class ComercioMapaActivity extends Activity {
     Double latitud, longitud;
     ProgressDialog mProgressDialog;
     JSONParser jsonParser = new JSONParser();
-
+    JSONArray jsonarray;
+    ListView listview;
+    ListViewAdapterArticulo adapter;
     String idComercio;
+    static String NOMBRE = "nombre";
+    static String MARCA = "marca";
+    static String DESCRIPCION = "descripcion";
+    static String VALOR = "valor";
 
     private static final String _URL = "http://tiny-alien.com.ar/api/v1/dondecompras/favorito";
+    private static final String _URL1 = "http://tiny-alien.com.ar/api/v1/dondecompras/lista_articulos";
     ArrayList<HashMap<String, String>> arraylist;
     AQuery aq = new AQuery(this);
-
+//    SharedPreferences DondeComprasPreferencias = getSharedPreferences("PreferenciasUsuario", Context.MODE_PRIVATE);
+//    String id_usuario = (DondeComprasPreferencias.getString("id_usuario", ""));
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,6 +105,7 @@ public class ComercioMapaActivity extends Activity {
         });
         mShowMap = GooglePlayServiceUtility.isPlayServiceAvailable(this) && initMap();
         mostrarPosicionComercio();
+        new listarArticulosComercio().execute();
     }
     private class BorrarFavorito extends AsyncTask<String, String, String> {
         @Override
@@ -108,10 +120,11 @@ public class ComercioMapaActivity extends Activity {
 
         @Override
         protected String doInBackground(String... args) {
+
             arraylist = new ArrayList<HashMap<String, String>>();
             List params = new ArrayList();
             params.add(new BasicNameValuePair("id_comercio", idComercio));
-            params.add(new BasicNameValuePair("id_usuario","3"));
+            params.add(new BasicNameValuePair("id_usuario","12"));
             Log.d("request!", "starting");
             JSONObject json = jsonParser.makeHttpRequest(_URL, "DELETE",
                     params);
@@ -130,7 +143,7 @@ public class ComercioMapaActivity extends Activity {
     public void GuardarFavorito() {
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("id_comercio", idComercio);
-        params.put("id_usuario", "3");
+        params.put("id_usuario","12");
         aq.ajax(_URL, params, JSONObject.class, new AjaxCallback<JSONObject>() {
 
             @Override
@@ -165,4 +178,50 @@ public class ComercioMapaActivity extends Activity {
                         .icon(BitmapDescriptorFactory.fromResource(R.drawable.pin))
         );
     }
-}
+
+
+    private class listarArticulosComercio extends AsyncTask<String, String, String> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            mProgressDialog = new ProgressDialog(ComercioMapaActivity.this);
+            mProgressDialog.setTitle("Donde Compras...");
+            mProgressDialog.setMessage("Cargando...");
+            mProgressDialog.setIndeterminate(false);
+            mProgressDialog.show();
+        }
+        @Override
+        protected String doInBackground(String... args) {
+            arraylist = new ArrayList<HashMap<String, String>>();
+            List params = new ArrayList();
+            params.add(new BasicNameValuePair("id_comercio",idComercio));
+            Log.d("request!", "starting");
+            JSONObject json = jsonParser.makeHttpRequest(_URL1, "GET",
+                    params);
+            Log.d("Json resultado", json.toString());
+            try {
+                jsonarray = json.getJSONArray("lista_Articulos");
+                for (int i = 0; i < jsonarray.length(); i++) {
+                    HashMap<String, String> map = new HashMap<String, String>();
+                    json = jsonarray.getJSONObject(i);
+                    map.put("nombre", json.getString("nombre"));
+                    map.put("marca", json.getString("marca"));
+                    map.put("descripcion", json.getString("descripcion"));
+                    map.put("valor", json.getString("valor"));
+                    arraylist.add(map);
+                }
+            } catch (JSONException e) {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
+            return null;
+        }
+        @Override
+        protected void onPostExecute(String args) {
+            listview = (ListView) findViewById(R.id.listview);
+            adapter = new ListViewAdapterArticulo(ComercioMapaActivity.this, arraylist);
+            listview.setAdapter(adapter);
+            mProgressDialog.dismiss();
+        }
+    }
+    }
