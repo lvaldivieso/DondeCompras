@@ -154,6 +154,7 @@ public class ComercioMapaActivity extends Activity {
             }
         });
     }
+
     private boolean initMap() {
         if(mMap == null){
             MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);

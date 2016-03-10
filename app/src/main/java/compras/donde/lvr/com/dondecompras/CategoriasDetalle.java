@@ -3,6 +3,7 @@ package compras.donde.lvr.com.dondecompras;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Location;
@@ -55,6 +56,7 @@ public class CategoriasDetalle extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.coordinator_categorias_lista_detalle);
+
         GPSTracker gps = new GPSTracker(this);
         double latitude = gps.getLatitude();
         double longitude = gps.getLongitude();
@@ -69,14 +71,14 @@ public class CategoriasDetalle extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              //  Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-              //          .setAction("Action", null).show();
+                //  Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                //          .setAction("Action", null).show();
                 Intent intent = new Intent(getApplicationContext(), ComercioNuevoActivity.class);
                 startActivity(intent);
             }
         });
 
-        new DownloadJSON().execute();
+
         posicion = getIntent().getStringExtra("posicion");
 
         LocationManager lm = (LocationManager) getSystemService(LOCATION_SERVICE);
@@ -84,7 +86,8 @@ public class CategoriasDetalle extends AppCompatActivity {
                 !lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
             gps.showSettingsAlert();
         }
-      //  Toast.makeText(getApplicationContext(), " Latitud " + latitud + " Longitud " + longitud, Toast.LENGTH_SHORT).show();
+        new DownloadJSON().execute();
+
     }
     private class DownloadJSON extends AsyncTask<String, String, String> {
         private DownloadJSON() {
