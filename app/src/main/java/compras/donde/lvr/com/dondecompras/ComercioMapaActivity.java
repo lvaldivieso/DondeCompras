@@ -60,8 +60,7 @@ public class ComercioMapaActivity extends Activity {
     private static final String _URL1 = "http://tiny-alien.com.ar/api/v1/dondecompras/lista_articulos";
     ArrayList<HashMap<String, String>> arraylist;
     AQuery aq = new AQuery(this);
-//    SharedPreferences DondeComprasPreferencias = getSharedPreferences("PreferenciasUsuario", Context.MODE_PRIVATE);
-//    String id_usuario = (DondeComprasPreferencias.getString("id_usuario", ""));
+    String id_usuario;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,6 +102,10 @@ public class ComercioMapaActivity extends Activity {
                 favorito.setVisibility(View.VISIBLE);
             }
         });
+
+        SharedPreferences DondeComprasPreferencias = getSharedPreferences("PreferenciasUsuario", Context.MODE_PRIVATE);
+        id_usuario = (DondeComprasPreferencias.getString("id_usuario", ""));
+
         mShowMap = GooglePlayServiceUtility.isPlayServiceAvailable(this) && initMap();
         mostrarPosicionComercio();
         new listarArticulosComercio().execute();
@@ -143,7 +146,7 @@ public class ComercioMapaActivity extends Activity {
     public void GuardarFavorito() {
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("id_comercio", idComercio);
-        params.put("id_usuario","12");
+        params.put("id_usuario", id_usuario);
         aq.ajax(_URL, params, JSONObject.class, new AjaxCallback<JSONObject>() {
 
             @Override
@@ -179,8 +182,7 @@ public class ComercioMapaActivity extends Activity {
                         .icon(BitmapDescriptorFactory.fromResource(R.drawable.pin))
         );
     }
-
-
+    
     private class listarArticulosComercio extends AsyncTask<String, String, String> {
         @Override
         protected void onPreExecute() {

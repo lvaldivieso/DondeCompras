@@ -40,6 +40,7 @@ public class ListViewAdapterFavorito extends BaseAdapter {
     JSONParser jsonParser = new JSONParser();
     ArrayList<HashMap<String, String>> arraylist;
     int pos;
+
     private static final String _URL = "http://tiny-alien.com.ar/api/v1/dondecompras/favorito";
 
 
@@ -48,9 +49,11 @@ public class ListViewAdapterFavorito extends BaseAdapter {
         this.context = context;
         data = arraylist;
         imageLoader = new ImageLoader(context);
+
     }
 
     public ListViewAdapterFavorito() {
+
     }
 
     @Override
@@ -80,7 +83,6 @@ public class ListViewAdapterFavorito extends BaseAdapter {
         View itemView = inflater.inflate(R.layout.activity_favorito_lista, parent, false);
         // Get the position
         resultp = data.get(position);
-
 
 
         nombre_establecimiento = (TextView) itemView.findViewById(R.id.establecimiento);
@@ -140,10 +142,9 @@ public class ListViewAdapterFavorito extends BaseAdapter {
             arraylist = new ArrayList<HashMap<String, String>>();
             List params = new ArrayList();
             params.add(new BasicNameValuePair("id_comercio",resultp.get(FavoritoActivity.ID_COMERCIO)));
-            params.add(new BasicNameValuePair("id_usuario","3"));
+            params.add(new BasicNameValuePair("id_usuario", FavoritoActivity.id_usuario));
             Log.d("request!", "starting");
-            JSONObject json = jsonParser.makeHttpRequest(_URL, "DELETE",
-                    params);
+            JSONObject json = jsonParser.makeHttpRequest(_URL, "DELETE", params);
             Log.d("Json resultado", json.toString());
 
             return null;

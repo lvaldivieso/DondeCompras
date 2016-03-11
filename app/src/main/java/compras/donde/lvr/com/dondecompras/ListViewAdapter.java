@@ -72,9 +72,6 @@ public class ListViewAdapter extends BaseAdapter {
                 // Get the position
                 resultp = data.get(position);
                 Intent intent = new Intent(context, CategoriasDetalle.class);
-               // intent.putExtra("nombre_esta", resultp.get(CategoriasActivity.NOMBRE_ESTA));
-               // intent.putExtra("img_previa", resultp.get(CategoriasActivity.IMG_PREVIA));
-               // intent.putExtra("direccion_esta", resultp.get(CategoriasActivity.DIRECCION_ESTA));
                 intent.putExtra("posicion", resultp.get(CategoriasActivity.ID_CATEGORIAS));
                 context.startActivity(intent);
             }

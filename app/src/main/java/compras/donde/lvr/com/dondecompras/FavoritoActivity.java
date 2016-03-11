@@ -1,6 +1,8 @@
 package compras.donde.lvr.com.dondecompras;
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -31,6 +33,7 @@ public class FavoritoActivity extends AppCompatActivity {
     static String LONGITUD = "longitud_esta";
     static String ID_COMERCIO = "id_comercio";
     static String ES_FAVORITO = "favorito";
+
     private static final String _URL = "http://tiny-alien.com.ar/api/v1/dondecompras/favorito";
 
     ListViewAdapterFavorito adapter;
@@ -39,12 +42,15 @@ public class FavoritoActivity extends AppCompatActivity {
     ListView listview;
     private ProgressDialog mProgressDialog;
     JSONParser jsonParser = new JSONParser();
+    static String id_usuario;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorito);
+        SharedPreferences DondeComprasPreferencias = getSharedPreferences("PreferenciasUsuario", Context.MODE_PRIVATE);
+        id_usuario = (DondeComprasPreferencias.getString("id_usuario", ""));
 
         new DownloadJSON().execute();
     }
@@ -65,7 +71,7 @@ public class FavoritoActivity extends AppCompatActivity {
 
             arraylist = new ArrayList();
             List params = new ArrayList();
-            params.add(new BasicNameValuePair("id_usuario", "3"));
+            params.add(new BasicNameValuePair("id_usuario", id_usuario));
 
             Log.d("request!", "starting");
             JSONObject json = jsonParser.makeHttpRequest(_URL, "GET", params);

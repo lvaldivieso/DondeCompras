@@ -1,5 +1,6 @@
 package compras.donde.lvr.com.dondecompras;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +30,7 @@ import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListe
 import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.model.people.Person;
 
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,6 +38,7 @@ import org.json.JSONObject;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class LoginGoogleActivity extends ActionBarActivity implements View.OnClickListener,
@@ -53,10 +57,14 @@ public class LoginGoogleActivity extends ActionBarActivity implements View.OnCli
     private LinearLayout viewContainer;
     private static final String _URL = "http://tiny-alien.com.ar/api/v1/dondecompras/usuario";
     ArrayList<HashMap<String, String>> arraylist;
-    AQuery aq = new AQuery(this);
     JSONArray jsonarray;
     static String ID_USUARIO = "id_usuario";
     String id_usuario;
+    String personName;
+    String personPhotoUrl;
+    String email;
+
+    JSONParser jsonParser = new JSONParser();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -150,9 +158,9 @@ public class LoginGoogleActivity extends ActionBarActivity implements View.OnCli
                 if (Plus.PeopleApi.getCurrentPerson(mGoogleApiClient) != null) {
                     Person person = Plus.PeopleApi
                             .getCurrentPerson(mGoogleApiClient);
-                    String personName = person.getDisplayName();
-                    String personPhotoUrl = person.getImage().getUrl();
-                    String email = Plus.AccountApi.getAccountName(mGoogleApiClient);
+                    personName = person.getDisplayName();
+                    personPhotoUrl = person.getImage().getUrl();
+                    email = Plus.AccountApi.getAccountName(mGoogleApiClient);
 
                     tvName.setText(personName);
                     tvMail.setText(email);
@@ -163,52 +171,9 @@ public class LoginGoogleActivity extends ActionBarActivity implements View.OnCli
 
                     new LoadProfileImage(imgProfilePic).execute(personPhotoUrl);
 
-                    Map<String, Object> params = new HashMap<String, Object>();
-                    params.put("nombre", personName);
-                    params.put("email", email);
-                    params.put("foto", personPhotoUrl);
-                    aq.ajax(_URL, params, JSONObject.class, new AjaxCallback<JSONObject>() {
+                    new GuardarUsuario().execute();
 
-                        @Override
-                        public void callback(String url, JSONObject json, AjaxStatus status) {
 
-                            Log.d("json", json.toString());
-                            id_usuario = json.optString("id_usuario");
-                            Toast.makeText(getApplicationContext(), id_usuario, Toast.LENGTH_LONG).show();
-                            Toast.makeText(getApplicationContext(), json.toString(), Toast.LENGTH_LONG).show();
-                            try {
-                                jsonarray = json.getJSONArray("Usuario");
-                                for (int i = 0; i < jsonarray.length(); i++) {
-                                    HashMap<String, String> map = new HashMap<String, String>();
-                                    json = jsonarray.getJSONObject(i);
-                                    id_usuario = json.optString("id_usuario");
-                                    map.put("id_usuario", json.getString("id_usuario"));
-                                    arraylist.add(map);
-                                }
-                            } catch (JSONException e) {
-                                Log.e("Error", e.getMessage());
-                                e.printStackTrace();
-                            }
-
-                        }
-                    });
-
-                    SharedPreferences DondeComprasPreferencias = getSharedPreferences("PreferenciasUsuario", Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = DondeComprasPreferencias.edit();
-                    String nombre_usuario = personName;
-                    String email_usuario = email;
-                    editor.putString("Usuario", nombre_usuario);
-                    editor.putString("Email", email_usuario);
-                    editor.putString("Foto", personPhotoUrl);
-                    editor.putString("id_usuario", id_usuario);
-                    editor.commit();
-
-                    Toast.makeText(getApplicationContext(),
-                            "En este momento estas Logueado " + personName + ID_USUARIO, Toast.LENGTH_LONG).show();
-
-                    Intent openMainActivity = new Intent(getApplicationContext(), CategoriasActivity.class);
-                    startActivity(openMainActivity);
-                    finish();
                 } else {
                     Toast.makeText(getApplicationContext(),
                             "No podemos ver tu información", Toast.LENGTH_SHORT).show();
@@ -283,4 +248,56 @@ public class LoginGoogleActivity extends ActionBarActivity implements View.OnCli
             bmImage.setImageBitmap(result);
         }
     }
+
+    public class GuardarUsuario extends AsyncTask<String, String, String> {
+
+        public GuardarUsuario() {
+        }
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+        }
+        protected String doInBackground(String... args) {
+
+            arraylist = new ArrayList();
+            List params = new ArrayList();
+            params.add(new BasicNameValuePair("nombre", personName));
+            params.add(new BasicNameValuePair("email", email));
+            params.add(new BasicNameValuePair("foto", personPhotoUrl));
+
+            Log.d("request!", "starting");
+            JSONObject json = jsonParser.makeHttpRequest(_URL, "POST", params);
+            Log.d("Json resultado", json.toString());
+
+            try {
+                jsonarray = json.getJSONArray("Usuario");
+                for (int i = 0; i < jsonarray.length(); i++) {
+                    HashMap<String, String> map = new HashMap();
+                    json = jsonarray.getJSONObject(i);
+                    id_usuario = json.optString("id_usuario");
+                    arraylist.add(map);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+        protected void onPostExecute(String args) {
+            SharedPreferences DondeComprasPreferencias = getSharedPreferences("PreferenciasUsuario", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = DondeComprasPreferencias.edit();
+            String nombre_usuario = personName;
+            String email_usuario = email;
+            editor.putString("Usuario", nombre_usuario);
+            editor.putString("Email", email_usuario);
+            editor.putString("Foto", personPhotoUrl);
+            editor.putString("id_usuario", id_usuario);
+            editor.commit();
+            CustomToast miToast = new CustomToast(getApplicationContext(), Toast.LENGTH_LONG);
+            miToast.show("En este momento estas Logueado " + (DondeComprasPreferencias.getString("Usuario", "")));
+            Intent openMainActivity = new Intent(getApplicationContext(), CategoriasActivity.class);
+            startActivity(openMainActivity);
+            finish();
+        }
+    }
+
 }
