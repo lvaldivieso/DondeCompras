@@ -3,10 +3,11 @@ package compras.donde.lvr.com.dondecompras;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.design.widget.FloatingActionButton;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
@@ -64,8 +65,18 @@ public class ComercioMapaActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.coordinator_activity_comercio_mapa);
 
-        setContentView(R.layout.activity_comercio_mapa);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.add_articulo);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //  Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                //          .setAction("Action", null).show();
+                Intent intent = new Intent(getApplicationContext(), ArticuloNuevoActivity.class);
+                startActivity(intent);
+            }
+        });
 
         comercio = (TextView) findViewById(R.id.txt_nombre_comercio);
         direccion_e = (TextView) findViewById(R.id.txt_direccion_e);
@@ -182,7 +193,7 @@ public class ComercioMapaActivity extends Activity {
                         .icon(BitmapDescriptorFactory.fromResource(R.drawable.pin))
         );
     }
-    
+
     private class listarArticulosComercio extends AsyncTask<String, String, String> {
         @Override
         protected void onPreExecute() {

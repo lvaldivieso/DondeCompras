@@ -78,7 +78,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ComercioNuevoActivity"
+        <activity android:name=".ArticuloNuevoActivity"
             android:label="Nuevo Precio"
             android:theme="@style/AppTheme">
 

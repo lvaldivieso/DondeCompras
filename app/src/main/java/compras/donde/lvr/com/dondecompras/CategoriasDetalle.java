@@ -1,24 +1,16 @@
 package compras.donde.lvr.com.dondecompras;
 
 
-import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
@@ -73,7 +65,7 @@ public class CategoriasDetalle extends AppCompatActivity {
             public void onClick(View view) {
                 //  Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 //          .setAction("Action", null).show();
-                Intent intent = new Intent(getApplicationContext(), ComercioNuevoActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ArticuloNuevoActivity.class);
                 startActivity(intent);
             }
         });
