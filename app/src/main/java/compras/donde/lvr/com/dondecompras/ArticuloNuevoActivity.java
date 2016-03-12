@@ -136,7 +136,7 @@ public class ArticuloNuevoActivity extends AppCompatActivity {
         protected Void doInBackground(String... args) {
             arraylist = new ArrayList<HashMap<String, String>>();
             List params = new ArrayList();
-            params.add(new BasicNameValuePair("", String.valueOf(posicion_lista_clases)));
+            params.add(new BasicNameValuePair("id_clase", String.valueOf(posicion_lista_clases)));
             Log.d("request!", "starting");
             JSONObject json = jsonParser.makeHttpRequest(_URL_tipo, "GET",
                     params);
@@ -200,7 +200,7 @@ public class ArticuloNuevoActivity extends AppCompatActivity {
         protected Void doInBackground(String... args) {
             arraylist = new ArrayList<HashMap<String, String>>();
             List params = new ArrayList();
-            params.add(new BasicNameValuePair("", String.valueOf(posicion_lista_tipo)));
+            params.add(new BasicNameValuePair("nombre_marca", String.valueOf(posicion_lista_tipo)));
             Log.d("request!", "starting");
             JSONObject json = jsonParser.makeHttpRequest(_URL_marca, "GET",
                     params);
