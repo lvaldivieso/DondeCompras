@@ -19,9 +19,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.androidquery.AQuery;
-import com.androidquery.callback.AjaxCallback;
-import com.androidquery.callback.AjaxStatus;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.SignInButton;
@@ -39,7 +36,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 
 public class LoginGoogleActivity extends ActionBarActivity implements View.OnClickListener,
         GoogleApiClient.ConnectionCallbacks, OnConnectionFailedListener{
@@ -93,8 +90,7 @@ public class LoginGoogleActivity extends ActionBarActivity implements View.OnCli
                     .build();
 
         } else {
-            //Toast.makeText(getApplicationContext(),
-            //        "En este momento estas Logueado " + (DondeComprasPreferencias.getString("Usuario", "")), Toast.LENGTH_LONG).show();
+
             CustomToast miToast = new CustomToast(getApplicationContext(), Toast.LENGTH_LONG);
             miToast.show("En este momento estas Logueado "+ (DondeComprasPreferencias.getString("Usuario", "")));
 
@@ -172,7 +168,6 @@ public class LoginGoogleActivity extends ActionBarActivity implements View.OnCli
                     new LoadProfileImage(imgProfilePic).execute(personPhotoUrl);
 
                     new GuardarUsuario().execute();
-
 
                 } else {
                     Toast.makeText(getApplicationContext(),

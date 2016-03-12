@@ -35,8 +35,6 @@ public class RoundImage extends Drawable {
         mBitmapHeight = mBitmap.getHeight();
     }
 
-
-
     @Override
     protected void onBoundsChange(Rect bounds) {
         super.onBoundsChange(bounds);
@@ -55,8 +53,6 @@ public class RoundImage extends Drawable {
     public void setColorFilter(ColorFilter cf) {
         mPaint.setColorFilter(cf);
     }
-
-
 
     @Override
     public int getOpacity() {

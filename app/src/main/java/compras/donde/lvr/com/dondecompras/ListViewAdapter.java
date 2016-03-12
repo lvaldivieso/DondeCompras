@@ -47,7 +47,7 @@ public class ListViewAdapter extends BaseAdapter {
     }
 
     public View getView(final int position, View convertView, ViewGroup parent) {
-        // Declare Variables
+
         TextView categoria;
         ImageView img_previa;
 
@@ -64,12 +64,12 @@ public class ListViewAdapter extends BaseAdapter {
         categoria.setText(resultp.get(CategoriasActivity.CATEGORIA));
 
         imageLoader.DisplayImage(resultp.get(CategoriasActivity.IMG_PREVIA), img_previa);
-        // Capture ListView item click
+
         itemView.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
-                // Get the position
+
                 resultp = data.get(position);
                 Intent intent = new Intent(context, CategoriasDetalle.class);
                 intent.putExtra("posicion", resultp.get(CategoriasActivity.ID_CATEGORIAS));
@@ -78,5 +78,4 @@ public class ListViewAdapter extends BaseAdapter {
         });
         return itemView;
     }
-
 }

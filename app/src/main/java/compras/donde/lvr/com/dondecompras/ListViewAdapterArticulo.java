@@ -1,25 +1,13 @@
 package compras.donde.lvr.com.dondecompras;
 
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
-import android.os.AsyncTask;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * Created by Leonardo on 28/01/2016.
@@ -69,13 +57,10 @@ public class ListViewAdapterArticulo extends BaseAdapter {
         // Get the position
         resultp = data.get(position);
 
-
-
         nombre = (TextView) itemView.findViewById(R.id.nombre_art);
         marca = (TextView) itemView.findViewById(R.id.marca_art);
         descripcion = (TextView) itemView.findViewById(R.id.descripcion_art);
         valor = (TextView) itemView.findViewById(R.id.valor_art);
-
 
         nombre.setText(resultp.get(ComercioMapaActivity.NOMBRE));
         marca.setText(resultp.get(ComercioMapaActivity.MARCA));
@@ -84,6 +69,4 @@ public class ListViewAdapterArticulo extends BaseAdapter {
 
       return itemView;
     }
-
-
 }
