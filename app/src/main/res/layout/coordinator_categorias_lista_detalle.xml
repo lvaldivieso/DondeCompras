@@ -8,7 +8,6 @@
     android:fitsSystemWindows="true"
     tools:context="compras.donde.lvr.com.dondecompras.CategoriasActivity">
 
-
     <include layout="@layout/activity_categorias_lista_detalle" />
 
     <android.support.design.widget.FloatingActionButton
@@ -19,7 +18,5 @@
         android:layout_margin="@dimen/fab_margin"
         android:src="@drawable/add"
         app:backgroundTint="#585858"/>
-
-
 
 </android.support.design.widget.CoordinatorLayout>

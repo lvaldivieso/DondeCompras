@@ -1,15 +1,27 @@
 package compras.donde.lvr.com.dondecompras;
 
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import org.apache.http.message.BasicNameValuePair;
@@ -35,14 +47,13 @@ public class CategoriasDetalle extends AppCompatActivity {
     ListViewAdapterDetalle adapter;
     ArrayList<HashMap<String, String>> arraylist;
     JSONArray jsonarray;
-    JSONObject jsonobject;
     ListView listview;
     private ProgressDialog mProgressDialog;
     JSONParser jsonParser = new JSONParser();
     String posicion;
     double latitud;
     double longitud;
-
+    final Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,6 +118,7 @@ public class CategoriasDetalle extends AppCompatActivity {
             Log.d("Json resultado", json.toString());
 
             try {
+
                 jsonarray = json.getJSONArray("Comercio");
                 for (int i = 0; i < jsonarray.length(); i++) {
                     HashMap<String, String> map = new HashMap();
@@ -122,17 +134,34 @@ public class CategoriasDetalle extends AppCompatActivity {
                     map.put("id_comercio", json.getString("id_comercio"));
                     arraylist.add(map);
                 }
-            } catch (JSONException e) {
+            }catch (JSONException e) {
                 e.printStackTrace();
             }
 
             return null;
         }
         protected void onPostExecute(String args) {
+            if (jsonarray.length() != 0){
             listview = (ListView) findViewById(R.id.listview_detalle);
             adapter = new ListViewAdapterDetalle(CategoriasDetalle.this, arraylist);
             listview.setAdapter(adapter);
             mProgressDialog.dismiss();
-        }
+        }else {
+                mProgressDialog.dismiss();
+                final Dialog dialog = new Dialog(context);
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog.setContentView(R.layout.alert_dialog_no_encontrado);
+                ImageView image = (ImageView) dialog.findViewById(R.id.no_disponible);
+                image.setImageResource(R.drawable.nodisponible);
+                Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
+                dialogButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+
+                dialog.show();
+            }}
     }
 }
