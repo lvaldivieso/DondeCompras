@@ -15,14 +15,13 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textColor="#000"
-        android:text="busqueda no disponible"/>
+        android:text="Lamentablemente la busqueda no ha arrojado resultados. Sé el primero en agregarlos."/>
 
     <Button
         android:id="@+id/dialogButtonOK"
-        android:layout_width="100px"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" Ok "
-
-        />
+        android:text=" Hacerlo! "
+        android:gravity="center"/>
 
 </LinearLayout>
