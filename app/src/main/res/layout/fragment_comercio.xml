@@ -31,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="descripcion"
-        android:layout_marginTop="9dp"
+        android:layout_marginTop="46dp"
         android:layout_below="@+id/btn_favorito"
         android:layout_alignLeft="@+id/txt_direccion_e"
         android:layout_alignStart="@+id/txt_direccion_e" />
@@ -80,5 +80,23 @@
             android:dividerHeight="1dp"
             android:listSelector="@drawable/list_selector" />
     </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="localidad"
+        android:id="@+id/localidad"
+        android:layout_below="@+id/txt_direccion_e"
+        android:layout_alignLeft="@+id/txt_descripcion_e"
+        android:layout_alignStart="@+id/txt_descripcion_e" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="telefono"
+        android:id="@+id/telefono"
+        android:layout_below="@+id/localidad"
+        android:layout_alignLeft="@+id/localidad"
+        android:layout_alignStart="@+id/localidad" />
 
 </RelativeLayout>

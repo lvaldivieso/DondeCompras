@@ -43,7 +43,7 @@ public class ComercioMapaActivity extends Activity {
 
     boolean mShowMap;
     GoogleMap mMap;
-    TextView comercio, descripcion_e, direccion_e;
+    TextView comercio, descripcion_e, direccion_e, localidad, telefono ;
     ImageButton favorito, favorito_no;
     Double latitud, longitud;
     ProgressDialog mProgressDialog;
@@ -79,12 +79,16 @@ public class ComercioMapaActivity extends Activity {
         });
 
         comercio = (TextView) findViewById(R.id.txt_nombre_comercio);
+        localidad = (TextView) findViewById(R.id.localidad);
+        telefono = (TextView) findViewById(R.id.telefono);
         direccion_e = (TextView) findViewById(R.id.txt_direccion_e);
         descripcion_e = (TextView) findViewById(R.id.txt_descripcion_e);
         favorito = (ImageButton) findViewById(R.id.btn_favorito);
         favorito_no = (ImageButton) findViewById(R.id.btn_favorito_no);
 
         comercio.setText(getIntent().getStringExtra("comercio"));
+        localidad.setText(getIntent().getStringExtra("localidad"));
+        telefono.setText(getIntent().getStringExtra("telefono"));
         direccion_e.setText(getIntent().getStringExtra("direccion"));
         descripcion_e.setText(getIntent().getStringExtra("descripcion"));
         String esfavorito = (getIntent().getStringExtra("favorito"));
