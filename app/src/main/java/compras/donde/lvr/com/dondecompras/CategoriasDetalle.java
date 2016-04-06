@@ -36,6 +36,8 @@ import java.util.List;
 public class CategoriasDetalle extends AppCompatActivity {
     static String DESCRIPCION = "descripcion_esta";
     static String DIRECCION = "direccion_esta";
+    static String LOCALIDAD = "localidad";
+    static String TELEFONO = "telefono";
     static String ID = "id_categoria";
     static String IMG_PREVIA = "img_previa";
     static String NOMBRE_ESTABLECIMIENTO = "nombre_esta";
@@ -92,6 +94,7 @@ public class CategoriasDetalle extends AppCompatActivity {
         new DownloadJSON().execute();
 
     }
+
     private class DownloadJSON extends AsyncTask<String, String, String> {
         private DownloadJSON() {
         }
@@ -125,7 +128,9 @@ public class CategoriasDetalle extends AppCompatActivity {
                     json = jsonarray.getJSONObject(i);
                     map.put("id_categoria", json.getString("id_categoria"));
                     map.put("nombre_esta", json.getString("nombre"));
-                    map.put("direccion_esta", json.getString("direccion"));
+                    map.put("direccion_esta", json.getString("calle"));
+                    map.put("localidad", json.getString("localidad"));
+                    map.put("telefono", json.getString("telefono"));
                     map.put("descripcion_esta", json.getString("descripcion"));
                     map.put("latitud_esta", json.getString("latitud"));
                     map.put("longitud_esta", json.getString("longitud"));

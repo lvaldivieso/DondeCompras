@@ -44,6 +44,8 @@ public class ListViewAdapterDetalle extends BaseAdapter {
 
         TextView nombre_establecimiento;
         TextView direccion;
+        TextView localidad;
+        TextView telefono;
         ImageView img_previa;
         TextView descripcion;
 
@@ -57,10 +59,14 @@ public class ListViewAdapterDetalle extends BaseAdapter {
         nombre_establecimiento = (TextView) itemView.findViewById(R.id.establecimiento);
         img_previa= (ImageView) itemView.findViewById(R.id.imagen_detalle);
         direccion = (TextView) itemView.findViewById(R.id.direccion_establecimiento);
+        localidad = (TextView) itemView.findViewById(R.id.localidad_establecimiento);
+        telefono = (TextView) itemView.findViewById(R.id.telefono_establecimiento);
         descripcion = (TextView) itemView.findViewById(R.id.descripcion_esta);
 
         nombre_establecimiento.setText(resultp.get(CategoriasDetalle.NOMBRE_ESTABLECIMIENTO));
         direccion.setText(resultp.get(CategoriasDetalle.DIRECCION));
+        localidad.setText(resultp.get(CategoriasDetalle.LOCALIDAD));
+        telefono.setText(resultp.get(CategoriasDetalle.TELEFONO));
         descripcion.setText(resultp.get(CategoriasDetalle.DESCRIPCION));
         imageLoader.DisplayImage(resultp.get(CategoriasDetalle.IMG_PREVIA), img_previa);
 
@@ -73,6 +79,8 @@ public class ListViewAdapterDetalle extends BaseAdapter {
                 intent.putExtra("id_comercio", resultp.get(CategoriasDetalle.ID));
                 intent.putExtra("comercio", resultp.get(CategoriasDetalle.NOMBRE_ESTABLECIMIENTO));
                 intent.putExtra("direccion", resultp.get(CategoriasDetalle.DIRECCION));
+                intent.putExtra("localidad", resultp.get(CategoriasDetalle.LOCALIDAD));
+                intent.putExtra("telefono", resultp.get(CategoriasDetalle.TELEFONO));
                 intent.putExtra("descripcion", resultp.get(CategoriasDetalle.DESCRIPCION));
                 intent.putExtra("latitud", resultp.get(CategoriasDetalle.LATITUD));
                 intent.putExtra("longitud", resultp.get(CategoriasDetalle.LONGITUD));

@@ -47,14 +47,34 @@
         android:layout_alignStart="@+id/establecimiento" />
 
     <TextView
-        android:id="@+id/descripcion_esta"
-        android:text="desc"
+        android:id="@+id/localidad_establecimiento"
+        android:text="localidad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
         android:layout_below="@+id/direccion_establecimiento"
         android:layout_alignLeft="@+id/direccion_establecimiento"
         android:layout_alignStart="@+id/direccion_establecimiento" />
+
+    <TextView
+        android:id="@+id/telefono_establecimiento"
+        android:text="telefono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:layout_below="@+id/localidad_establecimiento"
+        android:layout_alignLeft="@+id/localidad_establecimiento"
+        android:layout_alignStart="@+id/localidad_establecimiento" />
+
+    <TextView
+        android:id="@+id/descripcion_esta"
+        android:text="desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:layout_below="@+id/telefono_establecimiento"
+        android:layout_alignLeft="@+id/telefono_establecimiento"
+        android:layout_alignStart="@+id/telefono_establecimiento" />
 
     <ImageView android:layout_width="wrap_content"
         android:layout_height="wrap_content"
