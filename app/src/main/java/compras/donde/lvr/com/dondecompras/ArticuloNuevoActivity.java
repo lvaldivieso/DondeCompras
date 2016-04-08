@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -34,12 +35,15 @@ public class ArticuloNuevoActivity extends AppCompatActivity {
     Spinner clase;
     Spinner tipo;
     Spinner marca;
+    Button guardar;
     ArrayList<String> listaclases;
+    ArrayList<String> idclase;
     ArrayList<String> listatipo;
     ArrayList<String> listamarca;
     ArrayList<HashMap<String, String>> arraylist;
+    String itemClase;
     int posicion_lista_clases;
-    String posicion_lista_tipo;
+    String posicion_lista_tipo, idCategoria;
     private static final String _URL = "http://tiny-alien.com.ar/api/v1/dondecompras/clase";
     private static final String _URL_tipo = "http://tiny-alien.com.ar/api/v1/dondecompras/tipo";
     private static final String _URL_marca = "http://tiny-alien.com.ar/api/v1/dondecompras/marca";
@@ -51,17 +55,28 @@ public class ArticuloNuevoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_articulo_nuevo);
 
-
+        guardar = (Button) findViewById(R.id.guardar_articulo);
         clase = (Spinner) findViewById(R.id.lista_clase);
         tipo = (Spinner) findViewById(R.id.lista_tipo);
         marca = (Spinner) findViewById(R.id.lista_marca);
-        new DownloadJSON().execute();
         listaclases = new ArrayList<String>();
+        idclase = new ArrayList<String>();
         listatipo = new ArrayList<String>();
         listamarca = new ArrayList<String>();
+        idCategoria = (getIntent().getStringExtra("idCategoria"));
+
+        new DownloadClase().execute();
+        guardar.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                guardarArticulo();
+            }
+        });
+
     }
 
-    private class DownloadJSON extends AsyncTask<String, String, Void> {
+    private class DownloadClase extends AsyncTask<String, String, Void> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -73,7 +88,7 @@ public class ArticuloNuevoActivity extends AppCompatActivity {
         protected Void doInBackground(String... args) {
             arraylist = new ArrayList<HashMap<String, String>>();
             List params = new ArrayList();
-            //params.add(new BasicNameValuePair("",""));
+            params.add(new BasicNameValuePair("id_categoria",idCategoria));
             Log.d("request!", "starting");
             JSONObject json = jsonParser.makeHttpRequest(_URL, "GET",
                     params);
@@ -85,10 +100,8 @@ public class ArticuloNuevoActivity extends AppCompatActivity {
                     json = jsonarray.getJSONObject(i);
                     map.put("id_clase", json.getString("id_clase"));
                     map.put("clase", json.getString("nombre"));
-
                     arraylist.add(map);
                     listaclases.add(json.optString("nombre"));
-
                 }
 
             } catch (JSONException e) {
@@ -112,8 +125,9 @@ public class ArticuloNuevoActivity extends AppCompatActivity {
 
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                            String item = String.valueOf(clase.getSelectedItem());
-                            Toast.makeText(getApplicationContext(), item, Toast.LENGTH_SHORT).show();
+                            itemClase = String.valueOf(clase.getSelectedItem());
+                            Toast.makeText(getApplicationContext(), itemClase, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), String.valueOf(listaclases), Toast.LENGTH_SHORT).show();
                             posicion_lista_clases = position + 1;
                             new DownloadTipos().execute();
                         }
@@ -136,7 +150,8 @@ public class ArticuloNuevoActivity extends AppCompatActivity {
         protected Void doInBackground(String... args) {
             arraylist = new ArrayList<HashMap<String, String>>();
             List params = new ArrayList();
-            params.add(new BasicNameValuePair("id_clase", String.valueOf(posicion_lista_clases)));
+          //  params.add(new BasicNameValuePair("id_clase", String.valueOf(posicion_lista_clases)));
+            params.add(new BasicNameValuePair("id_clase", itemClase));
             Log.d("request!", "starting");
             JSONObject json = jsonParser.makeHttpRequest(_URL_tipo, "GET",
                     params);
@@ -186,7 +201,6 @@ public class ArticuloNuevoActivity extends AppCompatActivity {
                     });
         }
     }
-
     private class DownloadMarcas extends AsyncTask<String, String, Void> {
         @Override
         protected void onPreExecute() {
@@ -243,4 +257,9 @@ public class ArticuloNuevoActivity extends AppCompatActivity {
                     });
         }
     }
+    public void guardarArticulo(){
+
+
+    }
+
 }

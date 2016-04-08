@@ -67,6 +67,8 @@ public class ListViewAdapterFavorito extends BaseAdapter {
 
         TextView nombre_establecimiento;
         TextView direccion;
+        TextView localidad;
+        TextView telefono;
         ImageView img_previa;
         TextView descripcion;
 
@@ -83,6 +85,8 @@ public class ListViewAdapterFavorito extends BaseAdapter {
         nombre_establecimiento = (TextView) itemView.findViewById(R.id.establecimiento);
         img_previa= (ImageView) itemView.findViewById(R.id.imagen_detalle);
         direccion = (TextView) itemView.findViewById(R.id.direccion_establecimiento);
+        localidad = (TextView) itemView.findViewById(R.id.localidad_establecimiento);
+        telefono = (TextView) itemView.findViewById(R.id.telefono_establecimiento);
         descripcion = (TextView) itemView.findViewById(R.id.descripcion_esta);
 
         borrarFav = (ImageButton) itemView.findViewById(R.id.imageButton);
@@ -97,10 +101,12 @@ public class ListViewAdapterFavorito extends BaseAdapter {
         });
 
 
-        nombre_establecimiento.setText(resultp.get(CategoriasDetalle.NOMBRE_ESTABLECIMIENTO));
-        direccion.setText(resultp.get(CategoriasDetalle.DIRECCION));
-        descripcion.setText(resultp.get(CategoriasDetalle.DESCRIPCION));
-        imageLoader.DisplayImage(resultp.get(CategoriasDetalle.IMG_PREVIA), img_previa);
+        nombre_establecimiento.setText(resultp.get(FavoritoActivity.NOMBRE_ESTABLECIMIENTO));
+        direccion.setText(resultp.get(FavoritoActivity.DIRECCION));
+        localidad.setText(resultp.get(FavoritoActivity.LOCALIDAD));
+        telefono.setText(resultp.get(FavoritoActivity.TELEFONO));
+        descripcion.setText(resultp.get(FavoritoActivity.DESCRIPCION));
+        imageLoader.DisplayImage(resultp.get(FavoritoActivity.IMG_PREVIA), img_previa);
 
         itemView.setOnClickListener(new View.OnClickListener() {
 
@@ -111,6 +117,8 @@ public class ListViewAdapterFavorito extends BaseAdapter {
                 intent.putExtra("id_comercio", resultp.get(FavoritoActivity.ID));
                 intent.putExtra("comercio", resultp.get(FavoritoActivity.NOMBRE_ESTABLECIMIENTO));
                 intent.putExtra("direccion", resultp.get(FavoritoActivity.DIRECCION));
+                intent.putExtra("localidad", resultp.get(FavoritoActivity.LOCALIDAD));
+                intent.putExtra("telefono", resultp.get(FavoritoActivity.TELEFONO));
                 intent.putExtra("descripcion", resultp.get(FavoritoActivity.DESCRIPCION));
                 intent.putExtra("latitud", resultp.get(FavoritoActivity.LATITUD));
                 intent.putExtra("longitud", resultp.get(FavoritoActivity.LONGITUD));

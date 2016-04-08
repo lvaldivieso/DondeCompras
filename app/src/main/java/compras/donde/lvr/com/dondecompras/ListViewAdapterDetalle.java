@@ -76,7 +76,7 @@ public class ListViewAdapterDetalle extends BaseAdapter {
             public void onClick(View arg0) {
                 resultp = data.get(position);
                 Intent intent = new Intent(context, ComercioMapaActivity.class);
-                intent.putExtra("id_comercio", resultp.get(CategoriasDetalle.ID));
+                intent.putExtra("id_categoria", resultp.get(CategoriasDetalle.ID));
                 intent.putExtra("comercio", resultp.get(CategoriasDetalle.NOMBRE_ESTABLECIMIENTO));
                 intent.putExtra("direccion", resultp.get(CategoriasDetalle.DIRECCION));
                 intent.putExtra("localidad", resultp.get(CategoriasDetalle.LOCALIDAD));

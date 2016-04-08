@@ -52,10 +52,12 @@ public class ComercioMapaActivity extends Activity {
     ListView listview;
     ListViewAdapterArticulo adapter;
     String idComercio;
+    String idCategoria;
     static String NOMBRE = "nombre";
     static String MARCA = "marca";
     static String DESCRIPCION = "descripcion";
     static String VALOR = "valor";
+
 
     private static final String _URL = "http://tiny-alien.com.ar/api/v1/dondecompras/favorito";
     private static final String _URL1 = "http://tiny-alien.com.ar/api/v1/dondecompras/lista_articulos";
@@ -73,7 +75,9 @@ public class ComercioMapaActivity extends Activity {
             public void onClick(View view) {
                 //  Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 //          .setAction("Action", null).show();
+
                 Intent intent = new Intent(getApplicationContext(), ArticuloNuevoActivity.class);
+                intent.putExtra("idCategoria", idCategoria);
                 startActivity(intent);
             }
         });
@@ -93,6 +97,9 @@ public class ComercioMapaActivity extends Activity {
         descripcion_e.setText(getIntent().getStringExtra("descripcion"));
         String esfavorito = (getIntent().getStringExtra("favorito"));
         idComercio = (getIntent().getStringExtra("id_comercio"));
+        idCategoria = (getIntent().getStringExtra("id_categoria"));
+        //Toast.makeText(getApplicationContext(), idCategoria, Toast.LENGTH_SHORT).show();
+
 
         if (esfavorito.equals("null")){
             favorito.setVisibility(View.INVISIBLE);
@@ -194,7 +201,7 @@ public class ComercioMapaActivity extends Activity {
                         .position(latLng)
                         .title(markerTitle)
                         .anchor(.5f, .5f)
-                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.pin))
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.pin1))
         );
     }
 
