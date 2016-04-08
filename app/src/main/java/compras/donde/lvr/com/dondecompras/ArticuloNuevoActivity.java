@@ -11,9 +11,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.androidquery.AQuery;
+import com.androidquery.callback.AjaxCallback;
+import com.androidquery.callback.AjaxStatus;
 
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
@@ -23,6 +28,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Leonardo on 21/02/2016.
@@ -42,12 +48,14 @@ public class ArticuloNuevoActivity extends AppCompatActivity {
     ArrayList<String> listamarca;
     ArrayList<HashMap<String, String>> arraylist;
     String itemClase;
+    EditText precio;
     int posicion_lista_clases;
-    String posicion_lista_tipo, idCategoria;
+    String posicion_lista_tipo, idCategoria, idComercio;
     private static final String _URL = "http://tiny-alien.com.ar/api/v1/dondecompras/clase";
     private static final String _URL_tipo = "http://tiny-alien.com.ar/api/v1/dondecompras/tipo";
     private static final String _URL_marca = "http://tiny-alien.com.ar/api/v1/dondecompras/marca";
-
+    private static final String _URL_nuevoprecio = "http://tiny-alien.com.ar/api/v1/dondecompras/nuevoprecio";
+    AQuery aq = new AQuery(this);
     JSONParser jsonParser = new JSONParser();
 
     @Override
@@ -64,7 +72,8 @@ public class ArticuloNuevoActivity extends AppCompatActivity {
         listatipo = new ArrayList<String>();
         listamarca = new ArrayList<String>();
         idCategoria = (getIntent().getStringExtra("idCategoria"));
-
+        idComercio = (getIntent().getStringExtra("idComercio"));
+        precio = (EditText) findViewById(R.id.precio);
         new DownloadClase().execute();
         guardar.setOnClickListener(new View.OnClickListener() {
 
@@ -258,7 +267,19 @@ public class ArticuloNuevoActivity extends AppCompatActivity {
         }
     }
     public void guardarArticulo(){
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("id_comercio", idComercio);
+        params.put("id_tipo", 4);
+        params.put("valor",precio.getText().toString());
+        aq.ajax(_URL_nuevoprecio, params, JSONObject.class, new AjaxCallback<JSONObject>() {
 
+            @Override
+            public void callback(String url, JSONObject json, AjaxStatus status) {
+
+                Log.d("json", json.toString());
+                Toast.makeText(getApplicationContext(), "Nuevo Precio Añadido", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 

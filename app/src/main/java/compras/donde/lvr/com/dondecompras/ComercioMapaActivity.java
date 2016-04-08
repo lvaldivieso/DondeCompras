@@ -78,6 +78,7 @@ public class ComercioMapaActivity extends Activity {
 
                 Intent intent = new Intent(getApplicationContext(), ArticuloNuevoActivity.class);
                 intent.putExtra("idCategoria", idCategoria);
+                intent.putExtra("idComercio", idComercio);
                 startActivity(intent);
             }
         });
@@ -230,8 +231,8 @@ public class ComercioMapaActivity extends Activity {
                     HashMap<String, String> map = new HashMap<String, String>();
                     json = jsonarray.getJSONObject(i);
                     map.put("nombre", json.getString("nombre"));
-                    map.put("marca", json.getString("marca"));
-                    map.put("descripcion", json.getString("descripcion"));
+                   // map.put("marca", json.getString("marca"));
+                   // map.put("descripcion", json.getString("descripcion"));
                     map.put("valor", json.getString("valor"));
                     arraylist.add(map);
                 }
