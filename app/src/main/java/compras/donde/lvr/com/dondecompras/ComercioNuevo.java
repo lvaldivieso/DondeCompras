@@ -58,11 +58,12 @@ public class ComercioNuevo extends AppCompatActivity {
         params.put("localidad",localidad.getText().toString());
         params.put("telefono",telefono.getText().toString());
         params.put("descripcion",descripcion.getText().toString());
+        params.put("latitud","0");
+        params.put("longitud","0");
         aq.ajax(_URL, params, JSONObject.class, new AjaxCallback<JSONObject>() {
 
             @Override
             public void callback(String url, JSONObject json, AjaxStatus status) {
-
                 Log.d("json", json.toString());
                 Toast.makeText(getApplicationContext(), "Nuevo Comercio Añadido", Toast.LENGTH_SHORT).show();
             }
