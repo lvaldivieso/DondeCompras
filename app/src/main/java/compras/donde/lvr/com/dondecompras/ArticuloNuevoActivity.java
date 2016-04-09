@@ -35,8 +35,6 @@ import java.util.Map;
  */
 public class ArticuloNuevoActivity extends AppCompatActivity {
     JSONArray jsonarray;
-    ListView listview;
-    ListViewAdapter adapter;
     ProgressDialog mProgressDialog;
     Spinner clase;
     Spinner tipo;
