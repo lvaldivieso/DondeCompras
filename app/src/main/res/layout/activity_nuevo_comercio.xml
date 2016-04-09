@@ -79,7 +79,5 @@
             android:text="Guardar"
             android:id="@+id/NC_guardar"
             android:layout_gravity="center_horizontal"/>
-
-
     </LinearLayout>
 </ScrollView>

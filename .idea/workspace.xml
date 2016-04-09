@@ -24,8 +24,10 @@
   <component name="ChangeListManager">
     <list default="true" id="f5e0a064-e6bf-4f1d-a943-14aa7c1aaabf" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/compras/donde/lvr/com/dondecompras/ArticuloNuevoActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/compras/donde/lvr/com/dondecompras/ArticuloNuevoActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/compras/donde/lvr/com/dondecompras/CategoriasDetalle.java" afterPath="$PROJECT_DIR$/app/src/main/java/compras/donde/lvr/com/dondecompras/CategoriasDetalle.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/compras/donde/lvr/com/dondecompras/ComercioNuevo.java" afterPath="$PROJECT_DIR$/app/src/main/java/compras/donde/lvr/com/dondecompras/ComercioNuevo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_nuevo_comercio.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_nuevo_comercio.xml" />
     </list>
     <ignored path="DondeCompras.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -53,57 +55,51 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ComercioNuevo.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ComercioNuevo.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/compras/donde/lvr/com/dondecompras/ComercioNuevo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.5782609">
+              <caret line="56" column="55" selection-start-line="56" selection-start-column="55" selection-end-line="56" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1539#1691#0" expanded="true" />
+                <element signature="e#1690#1691#0" expanded="true" />
+                <element signature="e#2209#2530#0" expanded="true" />
+                <element signature="e#2529#2530#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-24.23077">
-              <caret line="98" column="19" selection-start-line="98" selection-start-column="19" selection-end-line="98" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CategoriasDetalle.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/compras/donde/lvr/com/dondecompras/CategoriasDetalle.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3594203">
-              <caret line="151" column="38" selection-start-line="151" selection-start-column="38" selection-end-line="151" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ComercioMapaActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/compras/donde/lvr/com/dondecompras/ComercioMapaActivity.java">
+      <file leaf-file-name="ArticuloNuevoActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/compras/donde/lvr/com/dondecompras/ArticuloNuevoActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="73" column="60" selection-start-line="73" selection-start-column="16" selection-end-line="73" selection-end-column="60" />
+              <caret line="279" column="11" selection-start-line="267" selection-start-column="7" selection-end-line="279" selection-end-column="11" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#onPreExecute#0;class#listarArticulosComercio#0;class#ComercioMapaActivity#0" expanded="false" />
+                <element signature="e#2807#2959#0" expanded="true" />
+                <element signature="e#2958#2959#0" expanded="true" />
+                <element signature="class#DownloadClase#0;class#ArticuloNuevoActivity#0" expanded="false" />
+                <element signature="class#DownloadTipos#0;class#ArticuloNuevoActivity#0" expanded="false" />
+                <element signature="method#onPreExecute#0;class#DownloadTipos#0;class#ArticuloNuevoActivity#0" expanded="false" />
+                <element signature="method#doInBackground#0;class#DownloadTipos#0;class#ArticuloNuevoActivity#0" expanded="false" />
+                <element signature="class#DownloadMarcas#0;class#ArticuloNuevoActivity#0" expanded="false" />
+                <element signature="method#onPreExecute#0;class#DownloadMarcas#0;class#ArticuloNuevoActivity#0" expanded="false" />
+                <element signature="method#doInBackground#0;class#DownloadMarcas#0;class#ArticuloNuevoActivity#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_nuevo_comercio.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_nuevo_comercio.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-11.090909">
+              <caret line="80" column="56" selection-start-line="80" selection-start-column="56" selection-end-line="80" selection-end-column="56" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1891,12 +1887,12 @@
         <option value="$PROJECT_DIR$/app/src/main/java/compras/donde/lvr/com/dondecompras/ComercioHeaderFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/compras/donde/lvr/com/dondecompras/ComercioMapaActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/compras/donde/lvr/com/dondecompras/ConfiguracionActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_nuevo_comercio.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/compras/donde/lvr/com/dondecompras/ComercioNuevo.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/alert_dialog_no_encontrado.xml" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/compras/donde/lvr/com/dondecompras/ArticuloNuevoActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/compras/donde/lvr/com/dondecompras/CategoriasDetalle.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_nuevo_comercio.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/compras/donde/lvr/com/dondecompras/ComercioNuevo.java" />
       </list>
     </option>
   </component>
@@ -1910,7 +1906,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1616" />
+    <option name="width" value="1612" />
     <option name="height" value="876" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -2504,7 +2500,13 @@
       <option name="project" value="LOCAL" />
       <updated>1460237573701</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="actividad nuevo comercio">
+      <created>1460237946019</created>
+      <option name="number" value="00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1460237946019</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TodoView">
@@ -2517,7 +2519,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <frame x="-8" y="-8" width="1612" height="876" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -2539,8 +2541,8 @@
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962447" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2062982" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850778" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20682989" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32729805" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -2798,16 +2800,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/compras/donde/lvr/com/dondecompras/CategoriasActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.55520505">
-          <caret line="55" column="14" selection-start-line="55" selection-start-column="14" selection-end-line="55" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/compras/donde/lvr/com/dondecompras/AppConstants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.08044164">
@@ -2946,21 +2938,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/compras/donde/lvr/com/dondecompras/ListViewAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25709778">
-          <caret line="53" column="22" selection-start-line="53" selection-start-column="22" selection-end-line="53" selection-end-column="22" />
-          <folding>
-            <element signature="e#946#947#0" expanded="true" />
-            <element signature="e#980#981#0" expanded="true" />
-            <element signature="e#1037#1038#0" expanded="true" />
-            <element signature="e#1064#1065#0" expanded="true" />
-            <element signature="e#1121#1122#0" expanded="true" />
-            <element signature="e#1145#1146#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/compras/donde/lvr/com/dondecompras/GooglePlayServiceUtility.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.05362776">
@@ -2994,17 +2971,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_nuevo_comercio.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5246711">
-          <caret line="69" column="47" selection-start-line="69" selection-start-column="47" selection-end-line="69" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_favorito_lista.xml">
       <provider editor-type-id="android-designer">
         <state />
@@ -3034,14 +3000,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/alert_dialog_no_encontrado.xml">
       <provider selected="true" editor-type-id="android-designer">
         <state />
@@ -3053,58 +3011,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-24.23077">
-          <caret line="98" column="19" selection-start-line="98" selection-start-column="19" selection-end-line="98" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-21/java/lang/String.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="12.598551">
           <caret line="1470" column="25" selection-start-line="1470" selection-start-column="25" selection-end-line="1470" selection-end-column="25" />
           <folding>
-            <element signature="e#54655#54656#0" expanded="true" />
-            <element signature="e#54700#54701#0" expanded="true" />
+            <element signature="e#54655#54656#0" expanded="false" />
+            <element signature="e#54700#54701#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/compras/donde/lvr/com/dondecompras/ComercioNuevo.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9487952">
+          <caret line="98" column="19" selection-start-line="98" selection-start-column="19" selection-end-line="98" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/compras/donde/lvr/com/dondecompras/ArticuloNuevoActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.7217391">
-          <caret line="36" column="24" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
-          <folding>
-            <element signature="e#2807#2959#0" expanded="true" />
-            <element signature="e#2958#2959#0" expanded="true" />
-            <element signature="class#DownloadClase#0;class#ArticuloNuevoActivity#0" expanded="false" />
-            <element signature="class#DownloadTipos#0;class#ArticuloNuevoActivity#0" expanded="false" />
-            <element signature="method#onPreExecute#0;class#DownloadTipos#0;class#ArticuloNuevoActivity#0" expanded="false" />
-            <element signature="method#doInBackground#0;class#DownloadTipos#0;class#ArticuloNuevoActivity#0" expanded="false" />
-            <element signature="class#DownloadMarcas#0;class#ArticuloNuevoActivity#0" expanded="false" />
-            <element signature="method#onPreExecute#0;class#DownloadMarcas#0;class#ArticuloNuevoActivity#0" expanded="false" />
-            <element signature="method#doInBackground#0;class#DownloadMarcas#0;class#ArticuloNuevoActivity#0" expanded="false" />
-            <element signature="e#11056#11375#0" expanded="true" />
-            <element signature="e#11374#11375#0" expanded="true" />
-          </folding>
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/compras/donde/lvr/com/dondecompras/ComercioMapaActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.71513945">
           <caret line="73" column="60" selection-start-line="73" selection-start-column="16" selection-end-line="73" selection-end-column="60" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -3115,9 +3051,70 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/compras/donde/lvr/com/dondecompras/CategoriasDetalle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3594203">
-          <caret line="151" column="38" selection-start-line="151" selection-start-column="38" selection-end-line="151" selection-end-column="38" />
+        <state vertical-scroll-proportion="0.70434785">
+          <caret line="166" column="46" selection-start-line="166" selection-start-column="46" selection-end-line="166" selection-end-column="46" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/compras/donde/lvr/com/dondecompras/ListViewAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26086956">
+          <caret line="53" column="22" selection-start-line="53" selection-start-column="22" selection-end-line="53" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/compras/donde/lvr/com/dondecompras/CategoriasActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.65072465">
+          <caret line="55" column="14" selection-start-line="55" selection-start-column="14" selection-end-line="55" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_nuevo_comercio.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.090909">
+          <caret line="80" column="56" selection-start-line="80" selection-start-column="56" selection-end-line="80" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/compras/donde/lvr/com/dondecompras/ArticuloNuevoActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="279" column="11" selection-start-line="267" selection-start-column="7" selection-end-line="279" selection-end-column="11" />
+          <folding>
+            <element signature="e#2807#2959#0" expanded="true" />
+            <element signature="e#2958#2959#0" expanded="true" />
+            <element signature="class#DownloadClase#0;class#ArticuloNuevoActivity#0" expanded="false" />
+            <element signature="class#DownloadTipos#0;class#ArticuloNuevoActivity#0" expanded="false" />
+            <element signature="method#onPreExecute#0;class#DownloadTipos#0;class#ArticuloNuevoActivity#0" expanded="false" />
+            <element signature="method#doInBackground#0;class#DownloadTipos#0;class#ArticuloNuevoActivity#0" expanded="false" />
+            <element signature="class#DownloadMarcas#0;class#ArticuloNuevoActivity#0" expanded="false" />
+            <element signature="method#onPreExecute#0;class#DownloadMarcas#0;class#ArticuloNuevoActivity#0" expanded="false" />
+            <element signature="method#doInBackground#0;class#DownloadMarcas#0;class#ArticuloNuevoActivity#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/compras/donde/lvr/com/dondecompras/ComercioNuevo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5782609">
+          <caret line="56" column="55" selection-start-line="56" selection-start-column="55" selection-end-line="56" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1539#1691#0" expanded="true" />
+            <element signature="e#1690#1691#0" expanded="true" />
+            <element signature="e#2209#2530#0" expanded="true" />
+            <element signature="e#2529#2530#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
