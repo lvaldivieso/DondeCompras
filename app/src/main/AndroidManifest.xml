@@ -88,6 +88,15 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".ComercioNuevo"
+            android:label="Nuevo Comercio"
+            android:theme="@style/AppTheme">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
 
     </application>
 
