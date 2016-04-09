@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="localidades">
+        <item>Seleccione una Localidad</item>
+        <item>Agronomía - Ciudad de Buenos Aires</item>
+        <item>Almagro - Ciudad de Buenos Aires</item>
+        <item>Barracas - Ciudad de Buenos Aires</item>
+        <item>Belgrano - Ciudad de Buenos Aires</item>
+        <item>Boca - Ciudad de Buenos Aires</item>
+        <item>Boedo - Ciudad de Buenos Aires</item>
+        <item>Caballito - Ciudad de Buenos Aires</item>
+        <item>Centro (San Nicolás) - Ciudad de Buenos Aires</item>
+        <item>Chacarita - Ciudad de Buenos Aires</item>
+        <item>Ciudad de Buenos Aires</item>
+        <item>Coghlan - Ciudad de Buenos Aires</item>
+        <item>Colegiales - Ciudad de Buenos Aires</item>
+        <item>Constitución - Ciudad de Buenos Aires</item>
+        <item>Costanera Norte - Ciudad de Buenos Aires</item>
+        <item>Flores - Ciudad de Buenos Aires</item>
+        <item>Floresta - Ciudad de Buenos Aires</item>
+        <item>General Fructuoso Rivera - Ciudad de Buenos Aires</item>
+        <item>La Paternal - Ciudad de Buenos Aires</item>
+        <item>Las Cañitas - Ciudad de Buenos Aires</item>
+        <item>Liniers - Ciudad de Buenos Aires</item>
+        <item>Mataderos - Ciudad de Buenos Aires</item>
+        <item>Monserrat - Ciudad de Buenos Aires</item>
+        <item>Monte Castro - Ciudad de Buenos Aires</item>
+        <item>Nueva Pompeya - Ciudad de Buenos Aires</item>
+        <item>Nuñez - Ciudad de Buenos Aires</item>
+        <item>Once (Balvanera) - Ciudad de Buenos Aires</item>
+        <item>Palermo - Ciudad de Buenos Aires</item>
+        <item>Palermo Hollywood - Ciudad de Buenos Aires</item>
+        <item>Parque Avellaneda - Ciudad de Buenos Aires</item>
+        <item>Parque Chacabuco - Ciudad de Buenos Aires</item>
+        <item>Parque Patricios - Ciudad de Buenos Aires</item>
+        <item>Puerto Madero - Ciudad de Buenos Aires</item>
+        <item>Recoleta - Ciudad de Buenos Aires</item>
+        <item>Retiro - Ciudad de Buenos Aires</item>
+        <item>Saavedra - Ciudad de Buenos Aires</item>
+        <item>San Cristóbal - Ciudad de Buenos Aires</item>
+        <item>San Telmo - Ciudad de Buenos Aires</item>
+        <item>Vélez Sarsfield - Ciudad de Buenos Aires</item>
+        <item>Versalles - Ciudad de Buenos Aires</item>
+        <item>Villa Crespo - Ciudad de Buenos Aires</item>
+        <item>Villa del Parque - Ciudad de Buenos Aires</item>
+        <item>Villa Devoto - Ciudad de Buenos Aires</item>
+        <item>Villa Gral Mitre - Ciudad de Buenos Aires</item>
+        <item>Villa Lugano - Ciudad de Buenos Aires</item>
+        <item>Villa Luro - Ciudad de Buenos Aires</item>
+        <item>Villa Ortuzar - Ciudad de Buenos Aires</item>
+        <item>Villa Pueyrredón - Ciudad de Buenos Aires</item>
+        <item>Villa Real - Ciudad de Buenos Aires</item>
+        <item>Villa Riachuelo - Ciudad de Buenos Aires</item>
+        <item>Villa Santa Rita - Ciudad de Buenos Aires</item>
+        <item>Villa Soldati - Ciudad de Buenos Aires</item>
+        <item>Villa Urquiza - Ciudad de Buenos Aires</item>
+        <item>Otra no listada</item>
+    </string-array>
+</resources>

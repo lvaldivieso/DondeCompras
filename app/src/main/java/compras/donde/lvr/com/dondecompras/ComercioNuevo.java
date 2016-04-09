@@ -4,8 +4,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.androidquery.AQuery;
@@ -25,6 +27,7 @@ public class ComercioNuevo extends AppCompatActivity {
     String idCategoria;
     EditText nombre, calle, localidad, telefono, descripcion;
     Button guardar;
+    Spinner localidades;
     AQuery aq = new AQuery(this);
     private static final String _URL = "http://tiny-alien.com.ar/api/v1/dondecompras/comercio";
 
@@ -37,6 +40,7 @@ public class ComercioNuevo extends AppCompatActivity {
         //Toast.makeText(getApplicationContext(), idCategoria, Toast.LENGTH_SHORT).show();
         nombre = (EditText) findViewById(R.id.NC_nombre);
         calle = (EditText) findViewById(R.id.NC_calle);
+        localidades = (Spinner) findViewById(R.id.SpinnerLocalidades);
         localidad = (EditText) findViewById(R.id.NC_localidad);
         telefono = (EditText) findViewById(R.id.NC_telefono);
         descripcion = (EditText) findViewById(R.id.NC_descripcion);
@@ -49,6 +53,10 @@ public class ComercioNuevo extends AppCompatActivity {
                 guardarComercio();
             }
         });
+
+        ArrayAdapter adapter = ArrayAdapter.createFromResource( this, R.array.localidades , android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        localidades.setAdapter(adapter);
     }
     public void guardarComercio(){
         Map<String, Object> params = new HashMap<String, Object>();
