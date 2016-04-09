@@ -1,7 +1,6 @@
 package compras.donde.lvr.com.dondecompras;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -13,15 +12,12 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
-
 import com.androidquery.AQuery;
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.plus.People;
 import com.google.android.gms.plus.Plus;
-
 
 /**
  * Created by Leonardo on 17/02/2016.
@@ -100,8 +96,6 @@ public class ConfiguracionActivity extends AppCompatActivity implements View.OnC
             public void onClick(View v){
                     onSignOutClicked();
                 }
-
-
         });
     }
 
@@ -150,19 +144,14 @@ public class ConfiguracionActivity extends AppCompatActivity implements View.OnC
     }
     @Override
     public void onConnectionFailed(ConnectionResult arg0) {
-
     }
 
     public void onSignOutClicked() {
-
             Plus.AccountApi.clearDefaultAccount(mGoogleApiClient);
             mGoogleApiClient.disconnect();
-
-
     }
 
     @Override
     public void onResult(People.LoadPeopleResult arg0) {
-
     }
 }

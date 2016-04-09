@@ -1,9 +1,7 @@
 package compras.donde.lvr.com.dondecompras;
 
 import android.app.ProgressDialog;
-
 import android.content.Intent;
-
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,13 +9,10 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-
 import android.widget.ListView;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -59,7 +54,6 @@ public class CategoriasActivity extends AppCompatActivity {
             intent = new Intent(this, ConfiguracionActivity.class);
             startActivity(intent);
         }else{
-
         if(id == R.id.action_favorite){
             intent = new Intent (this, FavoritoActivity.class);
                 startActivity(intent);

@@ -13,10 +13,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -35,21 +33,16 @@ public class ListViewAdapterFavorito extends BaseAdapter {
     JSONParser jsonParser = new JSONParser();
     ArrayList<HashMap<String, String>> arraylist;
     int pos;
-
     private static final String _URL = "http://tiny-alien.com.ar/api/v1/dondecompras/favorito";
-
 
     public ListViewAdapterFavorito(Context context,
                                    ArrayList<HashMap<String, String>> arraylist) {
         this.context = context;
         data = arraylist;
         imageLoader = new ImageLoader(context);
-
     }
 
-    public ListViewAdapterFavorito() {
-
-    }
+    public ListViewAdapterFavorito() {}
 
     @Override
     public int getCount() {
@@ -65,13 +58,8 @@ public class ListViewAdapterFavorito extends BaseAdapter {
     }
     public View getView(final int position, View convertView, ViewGroup parent) {
 
-        TextView nombre_establecimiento;
-        TextView direccion;
-        TextView localidad;
-        TextView telefono;
+        TextView nombre_establecimiento, direccion, localidad, telefono, descripcion;
         ImageView img_previa;
-        TextView descripcion;
-
         ImageButton borrarFav;
 
         inflater = (LayoutInflater) context
@@ -80,7 +68,6 @@ public class ListViewAdapterFavorito extends BaseAdapter {
         View itemView = inflater.inflate(R.layout.activity_favorito_lista, parent, false);
 
         resultp = data.get(position);
-
 
         nombre_establecimiento = (TextView) itemView.findViewById(R.id.establecimiento);
         img_previa= (ImageView) itemView.findViewById(R.id.imagen_detalle);
@@ -149,7 +136,6 @@ public class ListViewAdapterFavorito extends BaseAdapter {
             Log.d("request!", "starting");
             JSONObject json = jsonParser.makeHttpRequest(_URL, "DELETE", params);
             Log.d("Json resultado", json.toString());
-
             return null;
         }
 
@@ -162,5 +148,4 @@ public class ListViewAdapterFavorito extends BaseAdapter {
             miToast.show("Favorito Borrado");
         }
     }
-
 }

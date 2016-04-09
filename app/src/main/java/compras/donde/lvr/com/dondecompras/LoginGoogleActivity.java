@@ -1,6 +1,5 @@
 package compras.donde.lvr.com.dondecompras;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
@@ -15,10 +14,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.SignInButton;
@@ -26,17 +23,14 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
 import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.model.people.Person;
-
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 
 public class LoginGoogleActivity extends ActionBarActivity implements View.OnClickListener,
         GoogleApiClient.ConnectionCallbacks, OnConnectionFailedListener{
@@ -55,12 +49,10 @@ public class LoginGoogleActivity extends ActionBarActivity implements View.OnCli
     private static final String _URL = "http://tiny-alien.com.ar/api/v1/dondecompras/usuario";
     ArrayList<HashMap<String, String>> arraylist;
     JSONArray jsonarray;
-    static String ID_USUARIO = "id_usuario";
     String id_usuario;
     String personName;
     String personPhotoUrl;
     String email;
-
     JSONParser jsonParser = new JSONParser();
 
     @Override
@@ -90,7 +82,6 @@ public class LoginGoogleActivity extends ActionBarActivity implements View.OnCli
                     .build();
 
         } else {
-
             CustomToast miToast = new CustomToast(getApplicationContext(), Toast.LENGTH_LONG);
             miToast.show("En este momento estas Logueado "+ (DondeComprasPreferencias.getString("Usuario", "")));
 
@@ -166,9 +157,7 @@ public class LoginGoogleActivity extends ActionBarActivity implements View.OnCli
                             + PROFILE_PIC_SIZE;
 
                     new LoadProfileImage(imgProfilePic).execute(personPhotoUrl);
-
                     new GuardarUsuario().execute();
-
                 } else {
                     Toast.makeText(getApplicationContext(),
                             "No podemos ver tu información", Toast.LENGTH_SHORT).show();
@@ -294,5 +283,4 @@ public class LoginGoogleActivity extends ActionBarActivity implements View.OnCli
             finish();
         }
     }
-
 }

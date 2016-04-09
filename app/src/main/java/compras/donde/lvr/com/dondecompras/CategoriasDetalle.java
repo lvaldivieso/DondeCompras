@@ -23,6 +23,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
@@ -82,8 +83,6 @@ public class CategoriasDetalle extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
         posicion = getIntent().getStringExtra("posicion");
 
         LocationManager lm = (LocationManager) getSystemService(LOCATION_SERVICE);
@@ -91,10 +90,9 @@ public class CategoriasDetalle extends AppCompatActivity {
                 !lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
             gps.showSettingsAlert();
         }
+
         new DownloadJSON().execute();
-
     }
-
     private class DownloadJSON extends AsyncTask<String, String, String> {
         private DownloadJSON() {
         }

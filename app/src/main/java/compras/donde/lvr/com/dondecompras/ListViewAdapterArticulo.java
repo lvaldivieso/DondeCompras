@@ -44,11 +44,7 @@ public class ListViewAdapterArticulo extends BaseAdapter {
     }
     public View getView(final int position, View convertView, ViewGroup parent) {
 
-        TextView nombre;
-        TextView marca;
-      //  TextView descripcion;
-        TextView valor;
-
+        TextView nombre, marca, valor, descripcion;
 
         inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -59,12 +55,12 @@ public class ListViewAdapterArticulo extends BaseAdapter {
 
         nombre = (TextView) itemView.findViewById(R.id.nombre_art);
         marca = (TextView) itemView.findViewById(R.id.marca_art);
-     //   descripcion = (TextView) itemView.findViewById(R.id.descripcion_art);
+        descripcion = (TextView) itemView.findViewById(R.id.descripcion_art);
         valor = (TextView) itemView.findViewById(R.id.valor_art);
 
         nombre.setText(resultp.get(ComercioMapaActivity.NOMBRE));
         marca.setText(resultp.get(ComercioMapaActivity.MARCA));
-    //    descripcion.setText(resultp.get(ComercioMapaActivity.DESCRIPCION));
+        descripcion.setText(resultp.get(ComercioMapaActivity.DESCRIPCION));
         valor.setText(resultp.get(ComercioMapaActivity.VALOR));
 
       return itemView;

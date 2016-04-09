@@ -2,7 +2,6 @@ package compras.donde.lvr.com.dondecompras;
 
 import android.graphics.Bitmap;
 import android.util.Log;
-
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -20,7 +19,6 @@ public class MemoryCache {
 
 	private long limit = 1000000;
 	public MemoryCache() {
-
 		setLimit(Runtime.getRuntime().maxMemory() / 4);
 	}
 	public void setLimit(long new_limit) {

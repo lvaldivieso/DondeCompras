@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -42,13 +41,8 @@ public class ListViewAdapterDetalle extends BaseAdapter {
     }
     public View getView(final int position, View convertView, ViewGroup parent) {
 
-        TextView nombre_establecimiento;
-        TextView direccion;
-        TextView localidad;
-        TextView telefono;
+        TextView nombre_establecimiento, direccion, localidad, telefono, descripcion;
         ImageView img_previa;
-        TextView descripcion;
-
         inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -57,7 +51,7 @@ public class ListViewAdapterDetalle extends BaseAdapter {
         resultp = data.get(position);
 
         nombre_establecimiento = (TextView) itemView.findViewById(R.id.establecimiento);
-        img_previa= (ImageView) itemView.findViewById(R.id.imagen_detalle);
+        img_previa = (ImageView) itemView.findViewById(R.id.imagen_detalle);
         direccion = (TextView) itemView.findViewById(R.id.direccion_establecimiento);
         localidad = (TextView) itemView.findViewById(R.id.localidad_establecimiento);
         telefono = (TextView) itemView.findViewById(R.id.telefono_establecimiento);

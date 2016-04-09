@@ -14,7 +14,6 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.androidquery.AQuery;
 import com.androidquery.callback.AjaxCallback;
 import com.androidquery.callback.AjaxStatus;
@@ -25,12 +24,10 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -57,8 +54,6 @@ public class ComercioMapaActivity extends Activity {
     static String MARCA = "marca";
     static String DESCRIPCION = "descripcion";
     static String VALOR = "valor";
-
-
     private static final String _URL = "http://tiny-alien.com.ar/api/v1/dondecompras/favorito";
     private static final String _URL1 = "http://tiny-alien.com.ar/api/v1/dondecompras/lista_articulos";
     ArrayList<HashMap<String, String>> arraylist;
@@ -75,7 +70,6 @@ public class ComercioMapaActivity extends Activity {
             public void onClick(View view) {
                 //  Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 //          .setAction("Action", null).show();
-
                 Intent intent = new Intent(getApplicationContext(), ArticuloNuevoActivity.class);
                 intent.putExtra("idCategoria", idCategoria);
                 intent.putExtra("idComercio", idComercio);
@@ -100,7 +94,6 @@ public class ComercioMapaActivity extends Activity {
         idComercio = (getIntent().getStringExtra("id_comercio"));
         idCategoria = (getIntent().getStringExtra("id_categoria"));
         //Toast.makeText(getApplicationContext(), idCategoria, Toast.LENGTH_SHORT).show();
-
 
         if (esfavorito.equals("null")){
             favorito.setVisibility(View.INVISIBLE);
@@ -146,16 +139,14 @@ public class ComercioMapaActivity extends Activity {
 
         @Override
         protected String doInBackground(String... args) {
-
             arraylist = new ArrayList<HashMap<String, String>>();
             List params = new ArrayList();
             params.add(new BasicNameValuePair("id_comercio", idComercio));
-            params.add(new BasicNameValuePair("id_usuario","12"));
+            params.add(new BasicNameValuePair("id_usuario",id_usuario));
             Log.d("request!", "starting");
             JSONObject json = jsonParser.makeHttpRequest(_URL, "DELETE",
                     params);
             Log.d("Json resultado", json.toString());
-
             return null;
         }
 
@@ -174,7 +165,6 @@ public class ComercioMapaActivity extends Activity {
 
             @Override
             public void callback(String url, JSONObject json, AjaxStatus status) {
-
                 Log.d("json", json.toString());
                 Toast.makeText(getApplicationContext(), "Favorito Añadido", Toast.LENGTH_SHORT).show();
             }
