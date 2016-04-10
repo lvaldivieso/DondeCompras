@@ -1,5 +1,7 @@
 package compras.donde.lvr.com.dondecompras;
 
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -17,7 +19,9 @@ import com.androidquery.callback.AjaxStatus;
 
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -30,6 +34,7 @@ public class ComercioNuevo extends AppCompatActivity {
     Button guardar;
     Spinner localidades;
     AQuery aq = new AQuery(this);
+    double lat, lng;
     private static final String _URL = "http://tiny-alien.com.ar/api/v1/dondecompras/comercio";
 
     @Override
@@ -73,15 +78,32 @@ public class ComercioNuevo extends AppCompatActivity {
     }
 
     public void guardarComercio(){
-        Map<String, Object> params = new HashMap<String, Object>();
+
+        final Geocoder gc = new Geocoder(this);
+        String Calle = calle.getText().toString();
+
+        if(gc.isPresent()) {
+            String ubicacion = Calle+barrio;
+            try {
+                List<Address> list = gc.getFromLocationName(ubicacion, 1);
+
+                Address address = list.get(0);
+
+                lat = address.getLatitude();
+                lng = address.getLongitude();
+            }catch (IOException e) {
+                Log.d("error en coordenadas", "no se pude recuperar las coordenadas");
+            }
+        }
+            Map<String, Object> params = new HashMap<String, Object>();
         params.put("id_categoria", idCategoria);
         params.put("nombre", nombre.getText().toString());
         params.put("calle",calle.getText().toString());
         params.put("localidad",barrio);
         params.put("telefono",telefono.getText().toString());
         params.put("descripcion",descripcion.getText().toString());
-        params.put("latitud","0");
-        params.put("longitud","0");
+        params.put("latitud",lat);
+        params.put("longitud",lng);
         aq.ajax(_URL, params, JSONObject.class, new AjaxCallback<JSONObject>() {
 
             @Override
