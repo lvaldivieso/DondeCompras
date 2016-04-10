@@ -25,7 +25,7 @@ import java.util.Map;
  */
 public class ComercioNuevo extends AppCompatActivity {
 
-    String idCategoria;
+    String idCategoria, barrio;
     EditText nombre, calle, telefono, descripcion;
     Button guardar;
     Spinner localidades;
@@ -61,9 +61,8 @@ public class ComercioNuevo extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapter, View vies,
                                        int position, long id) {
-                String barrio = String.valueOf(localidades.getSelectedItem());
-                Toast.makeText(getApplicationContext(), barrio, Toast.LENGTH_SHORT).show();
-                // Aquí se codifica la lógica que se ejecutará al seleccionar un elemento del Spinner.
+                barrio = String.valueOf(localidades.getSelectedItem());
+                //Toast.makeText(getApplicationContext(), barrio, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -78,7 +77,7 @@ public class ComercioNuevo extends AppCompatActivity {
         params.put("id_categoria", idCategoria);
         params.put("nombre", nombre.getText().toString());
         params.put("calle",calle.getText().toString());
-       // params.put("localidad",localidad.getText().toString());
+        params.put("localidad",barrio);
         params.put("telefono",telefono.getText().toString());
         params.put("descripcion",descripcion.getText().toString());
         params.put("latitud","0");
