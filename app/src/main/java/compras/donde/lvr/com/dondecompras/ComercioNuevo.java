@@ -83,12 +83,11 @@ public class ComercioNuevo extends AppCompatActivity {
         String Calle = calle.getText().toString();
 
         if(gc.isPresent()) {
-            String ubicacion = Calle+barrio;
+            String ubicacion = Calle+","+barrio;
             try {
                 List<Address> list = gc.getFromLocationName(ubicacion, 1);
 
                 Address address = list.get(0);
-
                 lat = address.getLatitude();
                 lng = address.getLongitude();
             }catch (IOException e) {
