@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,7 +26,7 @@ import java.util.Map;
 public class ComercioNuevo extends AppCompatActivity {
 
     String idCategoria;
-    EditText nombre, calle, localidad, telefono, descripcion;
+    EditText nombre, calle, telefono, descripcion;
     Button guardar;
     Spinner localidades;
     AQuery aq = new AQuery(this);
@@ -41,7 +42,6 @@ public class ComercioNuevo extends AppCompatActivity {
         nombre = (EditText) findViewById(R.id.NC_nombre);
         calle = (EditText) findViewById(R.id.NC_calle);
         localidades = (Spinner) findViewById(R.id.SpinnerLocalidades);
-        localidad = (EditText) findViewById(R.id.NC_localidad);
         telefono = (EditText) findViewById(R.id.NC_telefono);
         descripcion = (EditText) findViewById(R.id.NC_descripcion);
         guardar = (Button) findViewById(R.id.NC_guardar);
@@ -57,13 +57,28 @@ public class ComercioNuevo extends AppCompatActivity {
         ArrayAdapter adapter = ArrayAdapter.createFromResource( this, R.array.localidades , android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         localidades.setAdapter(adapter);
+        localidades.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapter, View vies,
+                                       int position, long id) {
+                String barrio = String.valueOf(localidades.getSelectedItem());
+                Toast.makeText(getApplicationContext(), barrio, Toast.LENGTH_SHORT).show();
+                // Aquí se codifica la lógica que se ejecutará al seleccionar un elemento del Spinner.
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapter) {
+
+            }
+        });
     }
+
     public void guardarComercio(){
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("id_categoria", idCategoria);
         params.put("nombre", nombre.getText().toString());
         params.put("calle",calle.getText().toString());
-        params.put("localidad",localidad.getText().toString());
+       // params.put("localidad",localidad.getText().toString());
         params.put("telefono",telefono.getText().toString());
         params.put("descripcion",descripcion.getText().toString());
         params.put("latitud","0");

@@ -47,12 +47,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:drawSelectorOnTop="true"
-            android:prompt="Spinner de Valores" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/NC_localidad" />
+            android:prompt="@string/spinner_localidades" />
 
         <TextView
             android:layout_width="wrap_content"
