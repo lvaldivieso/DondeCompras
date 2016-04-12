@@ -51,7 +51,7 @@ public class ComercioMapaActivity extends Activity {
     String idComercio;
     String idCategoria;
     static String NOMBRE = "nombre";
-    static String MARCA = "marca";
+    static String TIPO = "tipo";
     static String DESCRIPCION = "descripcion";
     static String VALOR = "valor";
     private static final String _URL = "http://tiny-alien.com.ar/api/v1/dondecompras/favorito";
@@ -221,9 +221,9 @@ public class ComercioMapaActivity extends Activity {
                     HashMap<String, String> map = new HashMap<String, String>();
                     json = jsonarray.getJSONObject(i);
                     map.put("nombre", json.getString("nombre"));
-                   // map.put("marca", json.getString("marca"));
-                   // map.put("descripcion", json.getString("descripcion"));
                     map.put("valor", json.getString("valor"));
+                    map.put("descripcion", json.getString("descripcion"));
+                    map.put("tipo", json.getString("tipo"));
                     arraylist.add(map);
                 }
             } catch (JSONException e) {

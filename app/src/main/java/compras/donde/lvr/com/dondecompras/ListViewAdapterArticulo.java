@@ -59,7 +59,7 @@ public class ListViewAdapterArticulo extends BaseAdapter {
         valor = (TextView) itemView.findViewById(R.id.valor_art);
 
         nombre.setText(resultp.get(ComercioMapaActivity.NOMBRE));
-        marca.setText(resultp.get(ComercioMapaActivity.MARCA));
+        marca.setText(resultp.get(ComercioMapaActivity.TIPO));
         descripcion.setText(resultp.get(ComercioMapaActivity.DESCRIPCION));
         valor.setText(resultp.get(ComercioMapaActivity.VALOR));
 

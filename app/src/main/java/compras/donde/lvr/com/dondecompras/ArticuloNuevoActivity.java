@@ -46,9 +46,9 @@ public class ArticuloNuevoActivity extends AppCompatActivity {
     ArrayList<String> listamarca;
     ArrayList<HashMap<String, String>> arraylist;
     String itemClase;
-    EditText precio;
+    EditText precio, descripcion;
     int posicion_lista_clases;
-    String posicion_lista_tipo, idCategoria, idComercio;
+    String posicion_lista_tipo, posicion_lista_marca, idCategoria, idComercio;
     private static final String _URL = "http://tiny-alien.com.ar/api/v1/dondecompras/clase";
     private static final String _URL_tipo = "http://tiny-alien.com.ar/api/v1/dondecompras/tipo";
     private static final String _URL_marca = "http://tiny-alien.com.ar/api/v1/dondecompras/marca";
@@ -72,6 +72,7 @@ public class ArticuloNuevoActivity extends AppCompatActivity {
         idCategoria = (getIntent().getStringExtra("idCategoria"));
         idComercio = (getIntent().getStringExtra("idComercio"));
         precio = (EditText) findViewById(R.id.precio);
+        descripcion = (EditText) findViewById(R.id.descripcion);
         new DownloadClase().execute();
         guardar.setOnClickListener(new View.OnClickListener() {
 
@@ -257,6 +258,7 @@ public class ArticuloNuevoActivity extends AppCompatActivity {
                     .setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                            posicion_lista_marca = String.valueOf(marca.getSelectedItem());
                         }
                         @Override
                         public void onNothingSelected(AdapterView<?> parent) {
@@ -267,8 +269,9 @@ public class ArticuloNuevoActivity extends AppCompatActivity {
     public void guardarArticulo(){
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("id_comercio", idComercio);
-        params.put("id_tipo", 4);
+        params.put("id_marca", posicion_lista_marca);
         params.put("valor",precio.getText().toString());
+        params.put("descripcion", descripcion.getText().toString());
         aq.ajax(_URL_nuevoprecio, params, JSONObject.class, new AjaxCallback<JSONObject>() {
 
             @Override

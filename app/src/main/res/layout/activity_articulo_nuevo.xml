@@ -31,6 +31,19 @@
         android:ems="10"
         android:id="@+id/precio" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Agrega una descripcion como tamaño, presentacion, unidades, etc"
+        android:id="@+id/textView9" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/descripcion" />
+
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
