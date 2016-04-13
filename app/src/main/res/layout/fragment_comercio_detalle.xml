@@ -15,59 +15,56 @@
         android:typeface="sans"
         android:textSize="20dip"
         android:textStyle="bold"
-            android:layout_marginLeft="30dp"
-        android:layout_marginStart="30dp"
-        android:capitalize="words"
+            android:capitalize="words"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
     <TextView
-        android:id="@+id/marca_art"
+        android:id="@+id/descripcion_art"
         android:text="direccion"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
-        android:layout_marginLeft="9dp"
-        android:layout_marginStart="9dp"
-        android:layout_below="@+id/nombre_art"
-        android:layout_toRightOf="@+id/nombre_art"
-        android:layout_toEndOf="@+id/nombre_art" />
+        android:layout_below="@+id/valor_art"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
-        android:id="@+id/descripcion_art"
+        android:id="@+id/marca_art"
         android:text="desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
-        android:layout_alignBaseline="@+id/nombre_art"
-        android:layout_alignBottom="@+id/nombre_art"
-        android:layout_alignLeft="@+id/marca_art"
-        android:layout_alignStart="@+id/marca_art" />
+        android:layout_below="@+id/valor_art"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
     <TextView
         android:id="@+id/valor_art"
-        android:text="desc"
+        android:text="valor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
-        android:layout_below="@+id/nombre_art"
+        android:textStyle="bold"
+        android:layout_alignTop="@+id/textView2"
         android:layout_toRightOf="@+id/textView2"
         android:layout_toEndOf="@+id/textView2"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
-        android:textStyle="bold" />
-    <TextView
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp" />
 
+    <TextView
         android:text="$"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
-        android:layout_alignBaseline="@+id/marca_art"
-        android:layout_alignBottom="@+id/marca_art"
-        android:layout_alignLeft="@+id/nombre_art"
-        android:layout_alignStart="@+id/nombre_art"
         android:id="@+id/textView2"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_marginLeft="9dp"
+        android:layout_marginStart="9dp"
+        android:layout_alignBottom="@+id/nombre_art"
+        android:layout_toRightOf="@+id/nombre_art"
+        android:layout_toEndOf="@+id/nombre_art"
+        android:layout_marginBottom="2dp" />
 
 
 
