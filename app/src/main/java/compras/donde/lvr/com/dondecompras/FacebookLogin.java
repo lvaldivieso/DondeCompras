@@ -8,6 +8,7 @@ import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -25,7 +26,6 @@ import com.facebook.share.widget.ShareDialog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
 public class FacebookLogin extends AppCompatActivity {
     CallbackManager callbackManager;
     Button share,details;
@@ -34,7 +34,6 @@ public class FacebookLogin extends AppCompatActivity {
     ProfilePictureView profile;
     Dialog details_dialog;
     TextView details_txt;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,12 +60,16 @@ public class FacebookLogin extends AppCompatActivity {
                 details_dialog.show();
             }
         });
-
-
+        String logintrue = (getIntent().getStringExtra("logintrue"));
         if(AccessToken.getCurrentAccessToken() != null){
             RequestData();
             share.setVisibility(View.VISIBLE);
             details.setVisibility(View.VISIBLE);
+            if(logintrue != null) {
+                Intent openMainActivity = new Intent(getApplicationContext(), CategoriasActivity.class);
+                startActivity(openMainActivity);
+                finish();
+            }
         }
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,6 +97,11 @@ public class FacebookLogin extends AppCompatActivity {
                     RequestData();
                     share.setVisibility(View.VISIBLE);
                     details.setVisibility(View.VISIBLE);
+                  //  CustomToast miToast = new CustomToast(getApplicationContext(), Toast.LENGTH_LONG);
+                  //  miToast.show("En este momento estas Logueado " + (DondeComprasPreferencias.getString("Usuario", "")));
+                    Intent openMainActivity = new Intent(getApplicationContext(), CategoriasActivity.class);
+                    startActivity(openMainActivity);
+                    finish();
                 }
             }
 
@@ -137,5 +145,4 @@ public class FacebookLogin extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
     }
-
 }

@@ -51,7 +51,9 @@ public class CategoriasActivity extends AppCompatActivity {
         int id = item.getItemId();
         Intent intent;
         if (id == R.id.action_settings) {
-            intent = new Intent(this, ConfiguracionActivity.class);
+           // intent = new Intent(this, ConfiguracionActivity.class);
+            intent = new Intent(this, FacebookLogin.class);
+            intent.putExtra("logintrue", true);
             startActivity(intent);
         }else{
         if(id == R.id.action_favorite){

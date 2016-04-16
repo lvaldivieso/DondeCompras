@@ -3,22 +3,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".FacebookLogin"
+    android:weightSum="1">
 
     <com.facebook.login.widget.ProfilePictureView
         android:id="@+id/picture"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:layout_width="200sp"
-        android:layout_height="200sp"/>
+        android:layout_width="100sp"
+        android:layout_height="100sp"/>
 
     <com.facebook.login.widget.LoginButton
         android:id="@+id/login_button"
         android:layout_width="200sp"
-        android:layout_height="wrap_content"
+        android:layout_height="5dp"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp" />
+        android:layout_marginBottom="20dp"
+        android:layout_weight="0.05" />
     <Button
         android:id="@+id/details"
         android:text="Show details"
