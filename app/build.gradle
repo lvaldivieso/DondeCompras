@@ -17,10 +17,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    repositories {
+        mavenCentral()
+    }
 }
-repositories {
-    mavenCentral()
-}
+
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -29,5 +30,5 @@ dependencies {
     compile 'com.android.support:design:22.2.1'
     compile 'com.google.android.gms:play-services:7.5.0'
     compile 'com.googlecode.android-query:android-query:0.24.3'
-    compile 'com.facebook.android:facebook-android-sdk:[4,5)'
+    compile 'com.facebook.android:facebook-android-sdk:4.2.0'
 }
