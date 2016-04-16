@@ -54,18 +54,16 @@ public class CategoriasDetalle extends AppCompatActivity {
     private ProgressDialog mProgressDialog;
     JSONParser jsonParser = new JSONParser();
     String posicion;
-    double latitud;
-    double longitud;
+    double latitud, latitude;
+    double longitud, longitude;
     final Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.coordinator_categorias_lista_detalle);
-
         GPSTracker gps = new GPSTracker(this);
-        double latitude = gps.getLatitude();
-        double longitude = gps.getLongitude();
+
 
         latitud = latitude;
         longitud = longitude;
@@ -92,7 +90,31 @@ public class CategoriasDetalle extends AppCompatActivity {
             gps.showSettingsAlert();
         }
 
-        new DownloadJSON().execute();
+        new ObtenerCoordenadas().execute();
+    }
+
+    private class ObtenerCoordenadas extends AsyncTask<Void, Void, Void>{
+        private ObtenerCoordenadas(){
+        }
+        protected void onPreExecute(){
+            mProgressDialog = new ProgressDialog(CategoriasDetalle.this);
+            mProgressDialog.setTitle("Donde Compras...");
+            mProgressDialog.setMessage("Obteniendo Coordenadas...");
+            mProgressDialog.setIndeterminate(false);
+            mProgressDialog.show();
+        }
+        protected Void doInBackground(Void... args) {
+            GPSTracker gps = new GPSTracker(getApplicationContext());
+            latitude = gps.getLatitude();
+            longitude = gps.getLongitude();
+            latitud = latitude;
+            longitud = longitude;
+            return null;
+        }
+        protected void onPostExecute(Void args){
+            mProgressDialog.dismiss();
+            new DownloadJSON().execute();
+        }
     }
     private class DownloadJSON extends AsyncTask<String, String, String> {
         private DownloadJSON() {
@@ -168,6 +190,7 @@ public class CategoriasDetalle extends AppCompatActivity {
                     }
                 });
                 dialog.show();
-            }}
+            }
+        }
     }
 }

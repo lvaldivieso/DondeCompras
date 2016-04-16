@@ -13,40 +13,25 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import com.androidquery.AQuery;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.plus.People;
-import com.google.android.gms.plus.Plus;
+
 
 /**
  * Created by Leonardo on 17/02/2016.
  */
-public class ConfiguracionActivity extends AppCompatActivity implements View.OnClickListener,
-        GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,
-        ResultCallback<People.LoadPeopleResult> {
+public class ConfiguracionActivity extends AppCompatActivity {
     int Pro = 100;
     private CheckBox notificacion;
     private SeekBar distancia;
-    private Button guardar, salir;
+    private Button guardar;
     private TextView cuadras, usuario, email;
     ImageView imagen;
     RoundImage roundedImage;
     AQuery aq = new AQuery(this);
-    private GoogleApiClient mGoogleApiClient;
-    private boolean mShouldResolve;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuracion);
-
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this).addApi(Plus.API)
-                .addScope(Plus.SCOPE_PLUS_LOGIN).build();
-
-        mGoogleApiClient.connect();
 
         notificacion = (CheckBox) findViewById(R.id.check_notificarme);
         distancia = (SeekBar) findViewById(R.id.barra_distancia);
@@ -58,7 +43,6 @@ public class ConfiguracionActivity extends AppCompatActivity implements View.OnC
         Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.temp_img);
         roundedImage = new RoundImage(bm);
         imagen.setImageDrawable(roundedImage);
-        salir = (Button) findViewById(R.id.sign_out_button_configuracion);
 
                 distancia.setMax(2000);
         distancia.incrementProgressBy(100);
@@ -91,12 +75,6 @@ public class ConfiguracionActivity extends AppCompatActivity implements View.OnC
             }
         });
 
-        salir.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-                    onSignOutClicked();
-                }
-        });
     }
 
     public void CargarPreferencias() {
@@ -122,36 +100,4 @@ public class ConfiguracionActivity extends AppCompatActivity implements View.OnC
         editor.commit();
     }
 
-    @Override
-    public void onConnected(Bundle arg0) {
-        mShouldResolve = false;
-        Plus.PeopleApi.loadVisible(mGoogleApiClient, null).setResultCallback(this);
-    }
-
-    @Override
-    public void onConnectionSuspended(int arg0) {
-        mGoogleApiClient.connect();
-    }
-
-    @Override
-    public void onClick(View v) {
-        onSignOutClicked();
-    }
-
-    protected void onStart() {
-        super.onStart();
-        mGoogleApiClient.connect();
-    }
-    @Override
-    public void onConnectionFailed(ConnectionResult arg0) {
-    }
-
-    public void onSignOutClicked() {
-            Plus.AccountApi.clearDefaultAccount(mGoogleApiClient);
-            mGoogleApiClient.disconnect();
-    }
-
-    @Override
-    public void onResult(People.LoadPeopleResult arg0) {
-    }
 }

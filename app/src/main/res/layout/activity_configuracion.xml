@@ -40,18 +40,6 @@
         android:layout_marginLeft="21dp"
         android:layout_marginStart="21dp" />
 
-    <Button
-        android:id="@+id/sign_out_button_configuracion"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/holo_red_light"
-        android:text="@string/salir"
-        android:textColor="#fff"
-        android:textStyle="bold"
-        android:layout_above="@+id/check_notificarme"
-        android:layout_alignLeft="@+id/Email_usuario"
-        android:layout_alignStart="@+id/Email_usuario" />
-
 
     <TextView
         android:layout_width="wrap_content"

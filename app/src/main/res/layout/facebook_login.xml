@@ -34,4 +34,92 @@
         android:layout_gravity="center"
         android:layout_width="200sp"
         android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Notificarme Nuevos Lugares"
+            android:id="@+id/txt_notificarme"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/check_notificarme"
+            android:layout_toEndOf="@+id/check_notificarme"
+            android:visibility="gone" />
+
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/check_notificarme"
+            android:layout_alignBottom="@+id/txt_notificarme"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:visibility="gone" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Distancia maxima de busqueda"
+            android:id="@+id/txt_distancia_maxima"
+            android:layout_below="@+id/check_notificarme"
+            android:layout_alignLeft="@+id/check_notificarme"
+            android:layout_alignStart="@+id/check_notificarme"
+            android:layout_marginTop="16dp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/txt_distancia_valor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:layout_alignBaseline="@+id/txt_distancia_maxima"
+            android:layout_alignBottom="@+id/txt_distancia_maxima"
+            android:layout_toRightOf="@+id/txt_notificarme"
+            android:layout_toEndOf="@+id/txt_notificarme"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="metros"
+            android:id="@+id/txt_cuadras"
+            android:layout_alignBaseline="@+id/txt_distancia_valor"
+            android:layout_alignBottom="@+id/txt_distancia_valor"
+            android:layout_toRightOf="@+id/txt_distancia_valor"
+            android:layout_toEndOf="@+id/txt_distancia_valor"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:visibility="gone" />
+
+
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/barra_distancia"
+            android:max="2000"
+            android:progress="100"
+            android:progressDrawable="@drawable/progress"
+            android:thumb="@drawable/thumb"
+            android:layout_below="@+id/txt_distancia_maxima"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="30dp"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btn_guardar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Guardar"
+            android:layout_marginTop="39dp"
+            android:layout_below="@+id/barra_distancia"
+            android:layout_centerHorizontal="true"
+            android:visibility="invisible" />
+    </RelativeLayout>
 </LinearLayout>

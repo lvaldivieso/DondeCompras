@@ -39,7 +39,6 @@ public class CategoriasActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -53,7 +52,7 @@ public class CategoriasActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
            // intent = new Intent(this, ConfiguracionActivity.class);
             intent = new Intent(this, FacebookLogin.class);
-            intent.putExtra("logintrue", true);
+            intent.putExtra("logintrue", "Iniciado");
             startActivity(intent);
         }else{
         if(id == R.id.action_favorite){
