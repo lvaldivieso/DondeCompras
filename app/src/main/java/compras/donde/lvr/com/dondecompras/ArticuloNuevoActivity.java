@@ -134,8 +134,8 @@ public class ArticuloNuevoActivity extends AppCompatActivity {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                             itemClase = String.valueOf(clase.getSelectedItem());
-                            Toast.makeText(getApplicationContext(), itemClase, Toast.LENGTH_SHORT).show();
-                            Toast.makeText(getApplicationContext(), String.valueOf(listaclases), Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(getApplicationContext(), itemClase, Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(getApplicationContext(), String.valueOf(listaclases), Toast.LENGTH_SHORT).show();
                             posicion_lista_clases = position + 1;
                             new DownloadTipos().execute();
                         }

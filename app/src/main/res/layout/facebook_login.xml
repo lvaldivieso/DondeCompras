@@ -12,7 +12,6 @@
         android:layout_marginTop="20dp"
         android:layout_width="100sp"
         android:layout_height="100sp"/>
-
     <com.facebook.login.widget.LoginButton
         android:id="@+id/login_button"
         android:layout_width="200sp"
@@ -21,25 +20,36 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         android:layout_weight="0.05" />
-    <Button
-        android:id="@+id/details"
-        android:text="Show details"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_width="200sp"
-        android:layout_marginBottom="20dp"
-        android:layout_height="wrap_content" />
-    <Button
-        android:id="@+id/share"
-        android:text="Share"
+        android:text="Usuario"
+        android:id="@+id/txt_fbUser"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_width="200sp"
-        android:layout_height="wrap_content" />
+        android:text="Email"
+        android:id="@+id/txt_fbEmail"/>
+    <!--  <Button
+          android:id="@+id/details"
+          android:text="Show details"
+          android:layout_gravity="center"
+          android:layout_width="200sp"
+          android:layout_marginBottom="20dp"
+          android:layout_height="wrap_content" />
+      <Button
+          android:id="@+id/share"
+          android:text="Share"
+          android:layout_gravity="center"
+          android:layout_width="200sp"
+          android:layout_height="wrap_content" /> -->
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
         android:orientation="vertical">
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -49,8 +59,6 @@
             android:layout_toRightOf="@+id/check_notificarme"
             android:layout_toEndOf="@+id/check_notificarme"
             android:visibility="gone" />
-
-
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -59,8 +67,6 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:visibility="gone" />
-
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -71,7 +77,6 @@
             android:layout_alignStart="@+id/check_notificarme"
             android:layout_marginTop="16dp"
             android:visibility="gone" />
-
         <TextView
             android:id="@+id/txt_distancia_valor"
             android:layout_width="wrap_content"
@@ -82,7 +87,6 @@
             android:layout_toRightOf="@+id/txt_notificarme"
             android:layout_toEndOf="@+id/txt_notificarme"
             android:visibility="gone" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -95,9 +99,6 @@
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
             android:visibility="gone" />
-
-
-
         <SeekBar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -111,7 +112,6 @@
             android:layout_alignParentStart="true"
             android:layout_marginTop="30dp"
             android:visibility="gone" />
-
         <Button
             android:id="@+id/btn_guardar"
             android:layout_width="wrap_content"

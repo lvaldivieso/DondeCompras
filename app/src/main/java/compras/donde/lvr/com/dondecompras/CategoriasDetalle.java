@@ -1,35 +1,24 @@
 package compras.donde.lvr.com.dondecompras;
 
-
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Toast;
-
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -63,8 +52,8 @@ public class CategoriasDetalle extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.coordinator_categorias_lista_detalle);
         GPSTracker gps = new GPSTracker(this);
-
-
+        latitude = gps.getLatitude();
+        longitude = gps.getLongitude();
         latitud = latitude;
         longitud = longitude;
 
@@ -90,31 +79,7 @@ public class CategoriasDetalle extends AppCompatActivity {
             gps.showSettingsAlert();
         }
 
-        new ObtenerCoordenadas().execute();
-    }
-
-    private class ObtenerCoordenadas extends AsyncTask<Void, Void, Void>{
-        private ObtenerCoordenadas(){
-        }
-        protected void onPreExecute(){
-            mProgressDialog = new ProgressDialog(CategoriasDetalle.this);
-            mProgressDialog.setTitle("Donde Compras...");
-            mProgressDialog.setMessage("Obteniendo Coordenadas...");
-            mProgressDialog.setIndeterminate(false);
-            mProgressDialog.show();
-        }
-        protected Void doInBackground(Void... args) {
-            GPSTracker gps = new GPSTracker(getApplicationContext());
-            latitude = gps.getLatitude();
-            longitude = gps.getLongitude();
-            latitud = latitude;
-            longitud = longitude;
-            return null;
-        }
-        protected void onPostExecute(Void args){
-            mProgressDialog.dismiss();
-            new DownloadJSON().execute();
-        }
+        new DownloadJSON().execute();
     }
     private class DownloadJSON extends AsyncTask<String, String, String> {
         private DownloadJSON() {

@@ -4,9 +4,11 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -28,12 +30,18 @@ import com.facebook.login.widget.ProfilePictureView;
 import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.ShareDialog;
 
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 public class FacebookLogin extends AppCompatActivity {
     CallbackManager callbackManager;
-    Button share,details;
+ //   Button share,details;
     ShareDialog shareDialog;
     LoginButton login;
     ProfilePictureView profile;
@@ -43,9 +51,15 @@ public class FacebookLogin extends AppCompatActivity {
     private CheckBox notificacion;
     private SeekBar distancia;
     private Button guardar;
-    private TextView cuadras, usuario, email, notificarme, text_distancia;
+    private TextView cuadras, usuario, Email, notificarme, text_distancia;
     String logintrue = null;
-
+    ArrayList<HashMap<String, String>> arraylist;
+    JSONParser jsonParser = new JSONParser();
+    JSONArray jsonarray;
+    String id_usuario;
+    String personName;
+    String email;
+    private static final String _URL = "http://tiny-alien.com.ar/api/v1/dondecompras/usuario";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,21 +75,25 @@ public class FacebookLogin extends AppCompatActivity {
         login = (LoginButton)findViewById(R.id.login_button);
         profile = (ProfilePictureView)findViewById(R.id.picture);
         shareDialog = new ShareDialog(this);
-        share = (Button)findViewById(R.id.share);
-        details = (Button)findViewById(R.id.details);
+       // share = (Button)findViewById(R.id.share);
+      //  details = (Button)findViewById(R.id.details);
+        usuario = (TextView) findViewById(R.id.txt_fbUser);
+        Email = (TextView) findViewById(R.id.txt_fbEmail);
         login.setReadPermissions("public_profile email");
-        share.setVisibility(View.INVISIBLE);
-        details.setVisibility(View.INVISIBLE);
+        Email.setVisibility(View.INVISIBLE);
+        usuario.setVisibility(View.INVISIBLE);
+//        share.setVisibility(View.INVISIBLE);
+        //details.setVisibility(View.INVISIBLE);
         details_dialog = new Dialog(this);
         details_dialog.setContentView(R.layout.dialog_details);
         details_dialog.setTitle("Details");
         details_txt = (TextView)details_dialog.findViewById(R.id.details);
-        details.setOnClickListener(new View.OnClickListener() {
+       /* details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 details_dialog.show();
             }
-        });
+        });*/
         logintrue = (getIntent().getStringExtra("logintrue"));
         distancia.setMax(2000);
         distancia.incrementProgressBy(100);
@@ -94,14 +112,18 @@ public class FacebookLogin extends AppCompatActivity {
         });
         if(AccessToken.getCurrentAccessToken() != null){
             RequestData();
+            usuario.setVisibility(View.VISIBLE);
+            usuario.setText(personName);
+            Email.setVisibility(View.VISIBLE);
+            Email.setText(email);
             notificacion.setVisibility(View.VISIBLE);
             distancia.setVisibility(View.VISIBLE);
             guardar.setVisibility(View.VISIBLE);
             cuadras.setVisibility(View.VISIBLE);
             notificarme.setVisibility(View.VISIBLE);
             text_distancia.setVisibility(View.VISIBLE);
-            share.setVisibility(View.VISIBLE);
-            details.setVisibility(View.VISIBLE);
+     //       share.setVisibility(View.VISIBLE);
+            //details.setVisibility(View.VISIBLE);
             CargarPreferencias();
             if(logintrue == null) {
                 Intent openMainActivity = new Intent(getApplicationContext(), CategoriasActivity.class);
@@ -113,8 +135,10 @@ public class FacebookLogin extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(AccessToken.getCurrentAccessToken() != null) {
-                    share.setVisibility(View.INVISIBLE);
-                    details.setVisibility(View.INVISIBLE);
+                  //  share.setVisibility(View.INVISIBLE);
+                    //details.setVisibility(View.INVISIBLE);
+                    usuario.setVisibility(View.INVISIBLE);
+                    Email.setVisibility(View.INVISIBLE);
                     notificacion.setVisibility(View.INVISIBLE);
                     distancia.setVisibility(View.INVISIBLE);
                     guardar.setVisibility(View.INVISIBLE);
@@ -126,13 +150,13 @@ public class FacebookLogin extends AppCompatActivity {
                 }
             }
         });
-        share.setOnClickListener(new View.OnClickListener() {
+     /*   share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ShareLinkContent content = new ShareLinkContent.Builder().build();
                 shareDialog.show(content);
             }
-        });
+        });*/
         login.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
@@ -144,8 +168,10 @@ public class FacebookLogin extends AppCompatActivity {
                     cuadras.setVisibility(View.VISIBLE);
                     notificarme.setVisibility(View.VISIBLE);
                     text_distancia.setVisibility(View.VISIBLE);
-                    share.setVisibility(View.VISIBLE);
-                    details.setVisibility(View.VISIBLE);
+
+             //       share.setVisibility(View.VISIBLE);
+                   // details.setVisibility(View.VISIBLE);
+
                   //  CustomToast miToast = new CustomToast(getApplicationContext(), Toast.LENGTH_LONG);
                   //  miToast.show("En este momento estas Logueado " + (DondeComprasPreferencias.getString("Usuario", "")));
                     Intent openMainActivity = new Intent(getApplicationContext(), CategoriasActivity.class);
@@ -171,15 +197,20 @@ public class FacebookLogin extends AppCompatActivity {
         GraphRequest request = GraphRequest.newMeRequest(AccessToken.getCurrentAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
             @Override
             public void onCompleted(JSONObject object,GraphResponse response) {
-
                 JSONObject json = response.getJSONObject();
                 try {
                     if(json != null){
                         String text = "<b>Name :</b> "+json.getString("name")+"<br><br><b>Email :</b> "+json.getString("email")+"<br><br><b>Profile link :</b> "+json.getString("link");
                         details_txt.setText(Html.fromHtml(text));
                         profile.setProfileId(json.getString("id"));
+                        personName = json.getString("name");
+                        email = json.getString("email");
+                        usuario.setVisibility(View.VISIBLE);
+                        usuario.setText(personName);
+                        Email.setVisibility(View.VISIBLE);
+                        Email.setText(email);
+                        new GuardarUsuario().execute();
                     }
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -218,6 +249,48 @@ public class FacebookLogin extends AppCompatActivity {
         editor.clear();
         editor.commit();
 
+    }
+    public class GuardarUsuario extends AsyncTask<String, String, String> {
+        public GuardarUsuario() {
+        }
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+        protected String doInBackground(String... args) {
+            arraylist = new ArrayList();
+            List params = new ArrayList();
+            params.add(new BasicNameValuePair("nombre", personName));
+            params.add(new BasicNameValuePair("email", email));
+            params.add(new BasicNameValuePair("foto", "facebook"));
+
+            Log.d("request!", "starting");
+            JSONObject json = jsonParser.makeHttpRequest(_URL, "POST", params);
+            Log.d("Json resultado", json.toString());
+
+            try {
+                jsonarray = json.getJSONArray("Usuario");
+                for (int i = 0; i < jsonarray.length(); i++) {
+                    HashMap<String, String> map = new HashMap();
+                    json = jsonarray.getJSONObject(i);
+                    id_usuario = json.optString("id_usuario");
+                    arraylist.add(map);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+        protected void onPostExecute(String args) {
+            SharedPreferences DondeComprasPreferencias = getSharedPreferences("PreferenciasUsuario", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = DondeComprasPreferencias.edit();
+            editor.putString("id_usuario", id_usuario);
+            editor.commit();
+            CustomToast miToast = new CustomToast(getApplicationContext(), Toast.LENGTH_LONG);
+            miToast.show("En este momento estas Logueado " + personName);
+           /* Intent openMainActivity = new Intent(getApplicationContext(), CategoriasActivity.class);
+            startActivity(openMainActivity);
+            finish();*/
+        }
     }
 
 }
