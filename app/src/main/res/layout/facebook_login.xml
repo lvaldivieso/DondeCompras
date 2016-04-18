@@ -5,13 +5,23 @@
     android:orientation="vertical"
     tools:context=".FacebookLogin"
     android:weightSum="1">
-
+<FrameLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center">
     <com.facebook.login.widget.ProfilePictureView
         android:id="@+id/picture"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:layout_width="100sp"
-        android:layout_height="100sp"/>
+        android:layout_width="120dp"
+        android:layout_height="120dp"/>
+    <ImageView
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:src="@drawable/frame"
+        android:layout_width="120dp"
+        android:layout_height="140dp" />
+</FrameLayout>
     <com.facebook.login.widget.LoginButton
         android:id="@+id/login_button"
         android:layout_width="200sp"
